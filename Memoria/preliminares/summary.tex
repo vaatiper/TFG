@@ -1,0 +1,31 @@
+% !TeX root = ../tfg.tex
+% !TeX encoding = utf8
+%
+%*******************************************************
+% Summary
+%*******************************************************
+
+\selectlanguage{english}
+\chapter{Summary}
+
+This work explores the key elements of Distribution Theory to understand and implement the findings in Chen and Chen's 1995 paper \textit{Universal approximation to nonlinear operators by neural networks with
+arbitrary activation functions and its applications to dynamic systems}.
+
+To address the results from Chen and Chen, the third chapter examines the fundamentals of Topological Vector Spaces (TVS), including their construction, convergence, and types. Emphasis is placed on test function spaces to introduce Distribution Theory. The fourth chapter explores the key results of Distribution Theory, presenting distributions as generalized functions compatible with classical differential calculus. It also covers rapidly decreasing functions to introduce tempered distributions, which are essential for some primary results in the mentioned paper.
+
+Chapter five focuses on deep learning fundamentals. It outlines a formal model of machine learning, delves into the architecture and applications of feedforward neural networks, and discusses optimization techniques for this model.
+
+With this theoretical groundwork laid, we tackle the results proposed by Chen and Chen. Chapter six provides proofs for these results, aiming first to relax conditions for a function to be considered an activation function, and then using these relaxed conditions to establish approximation theorems for functionals and operators. An example of applying the theorem's architecture to dynamical systems is given.
+
+To apply these results, the chosen method is Physics-Informed Neural Networks (PINNs). The seventh chapter summarizes the key points from the literature review on PINNs, with a focus on the Scientific Computing with Artificial Neural Networks (\textit{SciANN}) library. Here we demostrate how PINNs operate using \textit{SciANN}, evaluating the feasibility of approximating operators with this approach. The chapter includes an analysis of PINNs' features and \textit{SciANN}'s specificities.
+
+
+Finally, chapter eight presents experiments illustrating \textit{SciANN}'s versatility in addressing various problems and its limitations. The first experiment aims to demonstrate the versatility of \textit{SciANN}, which is not limited to the implementation of PINNs but also encompasses other tasks such as regression problems. The second experiment aims to demonstrate the acquired knowledge regarding the modeling of PINNs and to study how the complexity of the model affects the efficiency of the learning task in \textit{SciANN}. For this purpose, we chose the Burgers problem. 
+
+The experimentation culminates by integrating the architecture proposed in the sixth chapter for operator approximation with \textit{SciANN} and comparing the results with those obtained using \textit{DeepONet}, the only PINN-oriented library currently supporting operator learning. We conclude that \textit{SciANN} lacks the necessary abstractions to perform this task effectively.\\\\
+
+\textbf{Keywords: } Topological Vector Space, Distributions Theory, Operator, Deep Learning, Machine Learning, Activation Function, SciANN, PINNs, DeepONet. 
+
+% Al finalizar el resumen en inglés, volvemos a seleccionar el idioma español para el documento
+\selectlanguage{spanish} 
+\endinput

@@ -1,0 +1,27 @@
+\chapter{Conclusiones y futuros trabajos}\label{ch:noveno-capitulo}
+
+
+En este Trabajo Fin de Grado se han estudiado los aspectos más importantes de la Teoría de Distribuciones con el objetivo de comprender, desarrollar e implementar los resultados propuestos en el artículo~\cite{chen1995universal} para la aproximación de operadores de Lipschitz continuos entre espacios de Banach. Para su desarrollo se ha seguido la planificación propuesta en el \autoref{ch:primer-capitulo}.
+
+Para hacer frente a los resultados propuestos en~\cite{chen1995universal}, en el \autoref{ch:tercer-capitulo} se ha realizado un estudio de los fundamentos de los Espacios Vectoriales Topológicos: su construcción, convergencia y tipos, haciendo énfasis en el espacio de funciones test para poder introducir la Teoría de Distribuciones. En el \autoref{ch:cuarto-capitulo} se han trabajado los resultados más importantes de esta teoría y se han presentado las funciones de decrecimiento rápido con el objetivo de introducir las distribuciones temperadas, que son el ambiente de trabajo para algunos de los resultados principales de~\cite{chen1995universal}. Para ello, además, ha sido necesario recordar algunos resultados estudiados durante el grado, que quedan recogidos en el \autoref{ch:segundo-capitulo}.
+
+Por otro lado, en el \autoref{ch:quinto-capitulo} se han presentado los aspectos fundamentales de los modelos de aprendizaje profundo actuales,
+incluyendo su contextualización dentro del aprendizaje automático, la definición del modelo de red profunda prealimentada y las particularidades del proceso de entrenamiento de este tipo de redes. 
+
+Posteriormente, en el \autoref{ch:sexto-capitulo}, se han expuesto y demostrado los resultados del artículo~\cite{chen1995universal} publicado por Tianping Chen y Robert Chen en 1995, que responde a las restricciones impuestas a las funciones de activación sigmoidales en los modelos de aprendizaje profundo vigentes en la época, así como a la incapacidad  de las de redes neuronales diseñadas hasta el momento para hacer frente a problemas regidos por funcionales u operadores no lineales.
+
+Para la implementación de estos resultados se ha escogido un acercamiento mediante Physics-Informed Neural Networks (PINNs). En el \autoref{ch:septimo-capitulo} se recogen los aspectos más importantes del estudio bibliográfico realizado en la materia. Se ha hecho especial énfasis en la librería \textit{SciANN} por haber sido la librería escogida para desarrollar este proyecto. 
+
+Una vez introducido el concepdo de PINN, se ha realizado una serie de experimentaciones para evaluar la capacidad de  \textit{SciANN} para realizar distintas tareas de predicción. En estas experimentaciones hemos medido la robustez de los modelos de  \textit{SciANN} frente a ruido, su escalabilidad frente a grandes tamaños de datos y frente a modelos complejos. También se ha realizado una estimación del coste computacional que se atribuye al proceso de entrenamiento propio de las PINNs. 
+
+La experimentación culmina integrando la arquitectura propuesta en el \autoref{ch:sexto-capitulo} para la aproximación de operadores con \textit{SciANN} y comparando los resultados con los obtenidos para la librería \textit{DeepONet}~\cite{lu2024deeponet}, la única librería orientada a PINNs que a día de hoy soporta el aprendizaje de operadores. Tras la experimentación, se ha concluido que \textit{SciANN} no cuenta con las abstracciones necesarias para realizar correctamente esta tarea. Sin embargo, se considera que integrar el aprendizaje de operadores en la librería podría dar resultados muy positivos, pues la arquitectura propuesta en el \autoref{ch:sexto-capitulo} cuenta con una única capa oculta, lo que aseguraría un buen comportamiento de la librería frente al problema. 
+
+Con todo esto, se consideran cumplidos los objetivos iniciales del trabajo. No obstante, las limitaciones que  \textit{SciANN} ha dado durante la implementación del mismo dejan abiertas varias vías de trabajo futuras:
+
+\begin{itemize}
+    \item Corregir la implementación que \textit{SciANN} propone para el producto cartesiano.
+    \item Añadir la abstracción de operador mediante una clase de \textit{SciANN}.
+    \item Trabajar en una integración más sólida de \textit{SciANN} con \textit{Weights\&{Biases}}. 
+    \item Estudiar en detalle la implementación de la librería \textit{DeepONet} para identificar los elementos en los que difiere de \textit{SciANN}.
+    \item Ampliar la experimentación incluyendo más ejemplos de operadores no lineales. 
+\end{itemize}

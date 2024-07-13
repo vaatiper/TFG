@@ -1,0 +1,167 @@
+% !TEX program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% Plantilla, basada en la clase `scrbook` del paquete KOMA-script,  para la elaboración de un TFG siguiendo las directrices del la comisión del Grado en Matemáticas de la Universidad de Granada.
+
+% Francisco Torralbo Torralbo
+
+\documentclass[print, color]{ugrTFG}
+\usepackage{ dsfont }
+\usepackage{ upgreek }
+\usepackage{ amssymb }
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{mathabx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{ marvosym }
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{amsmath}
+\usepackage{pgfgantt}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{subcaption}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    inputencoding=utf8,
+    extendedchars=true,
+    literate={ñ}{{\~n}}1 {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1,
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\setlength{\oddsidemargin}{0cm} % Margen izquierdo
+\setlength{\evensidemargin}{0cm} % Margen derecho
+\setlength{\textwidth}{16cm} % Ancho del texto
+\setlength{\topmargin}{0cm} % Margen superior
+\setlength{\textheight}{20cm}
+
+\setlength{\parskip}{1em} 
+% Espacio entre párrafos
+%\setlength{\parindent}{0pt} % Indentación de los párrafos
+%\onehalfspacing
+% VERSIÓN ELECTRÓNICA PARA TABLETA
+% Cambiando la opción "print" por "tablet" generaremos un pdf adaptado para leerlo en tabletas de 9 pulgadas.
+
+% -------------------------------------------------------------------
+% INFORMACIÓN DEL TFG Y EL AUTOR
+% -------------------------------------------------------------------
+
+\newcommand{\miTitulo}{Aproximación de operadores de Lipschitz continuos entre espacios de Banach\xspace}
+\newcommand{\miNombre}{Violeta Ángeles Atienza Pereira\xspace}
+\newcommand{\miGrado}{Doble Grado en Ingeniería Informática y Matemáticas}
+%\newcommand{\miFacultad}{Facultad de Ciencias}
+\newcommand{\miFacultadCiencias}{Facultad de Ciencias}
+\newcommand{\miFacultadETSIIT}{Escuela Técnica Superior de Ingenierías Informática y Telecomunicación} 
+\newcommand{\miUniversidad}{Universidad de Granada}
+
+% Añadir tantos tutores como sea necesario separando cada uno de ellos mediante el comando `\medskip` y una línea en blanco
+\newcommand{\miTutor}{
+  Francisco Javier Merí de la Maza \\ \emph{Departamento de Análisis Matemático} 
+
+  % Añadir tantos tutores como sea necesario. 
+
+  \medskip
+  Miguel Molina-Solana \\ \emph{Departamento de Ciencias de la Computación e Inteligencia Artificial}
+}
+\newcommand{\miCurso}{2023-2024\xspace}
+
+\hypersetup{
+	pdftitle={\miTitulo},
+	pdfauthor={\textcopyright\ \miNombre, \miFacultad, \miUniversidad}
+}
+
+\begin{document}
+
+\maketitle
+
+% -------------------------------------------------------------------
+% FRONTMATTER
+% -------------------------------------------------------------------
+\frontmatter % Desactiva la numeración de capítulos y usa numeración romana para las páginas
+
+\input{preliminares/declaracion-originalidad}   
+\input{preliminares/dedicatoria}                % Opcional
+\input{preliminares/tablacontenidos}  
+\listoffigures
+\input{preliminares/agradecimientos}            % Opcional
+
+\input{preliminares/summary}                    
+\input{preliminares/introduccion}               
+
+% -------------------------------------------------------------------
+% MAINMATTER
+% -------------------------------------------------------------------
+\mainmatter % activa la numeración de capítulos, resetea la numeración de las páginas y usa números arábigos
+
+% \part{Aproximación a Operadores No Lineales mediante Redes Neuronales} 
+% Dividir un TFG en partes OPCIONAL
+\input{capitulos/capitulo_1}
+\input{capitulos/capitulo_2}
+\input{capitulos/capitulo_3}
+\input{capitulos/capitulo_4}
+\input{capitulos/capitulo_5}
+% Añadir tantos capítulos como sea necesario
+
+ % \cleardoublepage\part{Aplicación a Sistemas Dinámicos No Lineales}
+\input{capitulos/capitulo_6}
+\input{capitulos/capitulo_7}
+\input{capitulos/capitulo_8}
+\input{capitulos/capitulo_9}
+%\input{capitulos/capitulo-ejemplo}
+
+% -------------------------------------------------------------------
+% APPENDIX: Opcional
+% -------------------------------------------------------------------
+
+\appendix % Reinicia la numeración de los capítulos y usa letras para numerarlos
+\pdfbookmark[-1]{Apéndices}{appendix} % Alternativamente podemos agrupar los apéndices con un nuevo \part{Apéndices}
+
+%\input{apendices/apendice-ejemplo}
+% Añadir tantos apéndices como sea necesario 
+
+% -------------------------------------------------------------------
+% GLOSARIO: Opcional
+% -------------------------------------------------------------------
+
+%\input{glosario} 
+%
+% -------------------------------------------------------------------
+% BACKMATTER
+% -------------------------------------------------------------------
+
+\backmatter % Desactiva la numeración de los capítulos
+\pdfbookmark[-1]{Referencias}{BM-Referencias}
+
+% BIBLIOGRAFÍA
+%-------------------------------------------------------------------
+
+\bibliographystyle{alpha-es} 
+\bibliography{library}
+
+
+
+\end{document}

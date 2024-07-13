@@ -1,0 +1,599 @@
+\chapter{Espacios Vectoriales Topológicos}\label{ch:tercer-capitulo}
+
+El camino hacia la Teoría de Distribuciones comienza con la presentación del tipo de espacios en el que viven estos objetos: los Espacios Vectoriales Topológicos. Como su nombre indica, estos espacios permiten la definición y estudio de propiedades tanto topológicas como algebraicas. Esta estructura resulta especialmente útil en Análisis Funcional, ya que todos los espacios de funciones tienen estructura de espacio vectorial y en ellos se introducen nociones de convergencia para los elementos del espacio. No es de extrañar, por tanto, que el lugar donde viven las ``funciones generalizadas''  posea la misma estructura. 
+
+\section{Presentación y construcción de EVT}
+
+\begin{definicion}
+Sea $\tau$ una topología sobre un espacio vectorial $X$ cumpliendo que
+ \begin{itemize}
+ 	\item Cada punto de $X$ es un cerrado en $(X,\tau)$.
+ 	\item Las aplicaciones suma y producto por escalares son continuas con respecto a $\tau$.
+ \end{itemize}
+ 
+ Entonces, decimos que $\tau$ es una topología vectorial en $X$ y $X$ con la topología $\tau$ es un Espacio Vectorial Topológico (EVT).
+\end{definicion}
+
+
+\begin{definicion}
+Diremos que un subconjunto $U$ de un espacio vectorial $X$ es absorbente si $X=\mathds{R}^{+}U$. Diremos que $U$ es equilibrado si $\mathds{D}U\subseteq U$, donde $\mathds{D}$ es la bola unitaria cerrada en $ \mathds{R}$  o $\mathds{C}$. Dado un conjunto cualquiera $V$ de $X$, llamaremos envolvente equilibrada de $V$ al mínimo subconjunto equilibrado de $X$ que contiene a $V$, esto es, $\mathds{D}V$.
+\end{definicion}
+ 
+\begin{observacion}
+Que un conjunto sea equilibrado no implica que sea absorbente, ya que le pueden faltar vectores linealmente independientes al resto para llegar a cubrir toda la esfera unidad de $X$. Recíprocamente, un conjunto absorbente no tiene por qué ser equilibrado (es decir, no tiene por qué ser invariante por rotaciones).
+\end{observacion}
+
+\begin{definicion}
+Sean $X$ un espacio vectorial y $E\subseteq X$. Definimos el Funcional de Minkowski de $E$, $v_{E}:X\rightarrow[0,\infty[$ como
+\begin{equation}
+\nu_{E}(x) =\inf \left\{ \rho > 0 : x\in\rho E\right\} \qquad (x\in X).
+\end{equation}
+\end{definicion}
+
+\begin{definicion}
+Una familia $\mathcal{B}$ de subconjuntos no vacíos de un conjunto $X$ es una base de filtro si verifica que para cada $U,V\in \mathcal{B}$ existe algún $W\in\mathcal{B}$ tal que $W\subset U\cap V$. 
+\end{definicion}
+
+\begin{teorema}[Caracterización de las bases de entornos de cero en un EVT]
+Todo entorno de cero $U$ en un EVT es absorbente y contiene un entorno de cero equilibrado $V$ tal que $V + V \subset U$. Recíprocamente, sea $X$ un espacio vectorial y $\mathcal{B}$ una base de filtro en $X$ formada por conjuntos absorbentes y equilibrados, verificando que para cada $U\in\mathcal{B}$ existe $V\in\mathcal{B}$ tal que $V+V\subset U$. Entonces $\mathcal{B}$ es base de entornos de cero para una (única) topología vectorial en $X$. 
+\end{teorema}
+
+\begin{proposicion}
+Sea $X$ un EVT. Entonces, los operadores traslación $T_{a}(x) = a + x$, $\forall a,x\in X$ y, para cada $\lambda \neq 0$, los operadores multiplicación $M_{\lambda}(x)=\lambda x$, $\forall x\in X$ son homeomorfismos de $X$. Esto es, todas las traslaciones, giros y homotecias son homeomorfismos en $X$.
+\end{proposicion}
+
+Como consecuencia de la proposición anterior, tomando una base de entornos de cero $\mathcal{B}$ en $X$, $\{x + \mathcal{B}\}$ será una base de entornos para cada $x\in X$. Por tanto, una topología vectorial queda totalmente determinada por una base de entornos de cero. 
+
+\begin{definicion}
+    Sea $X$ un EVT y $A$ un subconjunto de $X$. Decimos que $A$ es precompacto si para cada entorno de cero $U$, existe un subconjunto finito $F\subset X$ tal que $A\subseteq F+U$.
+%Equivalentemente, $A$ es precompacto si para cada entorno de cero $U$, $A$ se puede expresar de la forma $A=\bigcup_{k=1}^n A_k$, con $A_k - A_k \subset U$, para cada $k=1,\ldots,n$.
+\end{definicion}
+
+\begin{teorema}[Teorema de Tihonov]\label{thm:d05}
+Si $X$ e $Y$ son EVT separados de dimensión finita, toda biyección lineal de $X$ sobre $Y$ es un isomorfismo. 
+\end{teorema}
+
+\begin{lema}[Lema de Riesz]\label{lm:d01}
+Sea $X$ un EVT, $M$ un subespacio cerrado y $A$ un subconjunto acotado de $X$. Supongamos que existe un $\lambda\in \mathds{K}$ con $|\lambda| <1$ tal que $A\subset M + \lambda A$. Entonces $A\subset M$. 
+\end{lema}
+\begin{teorema}[Teorema de Riesz]\label{thm:d04}
+Sea $X$ un EVT separado. Entonces equivalen:
+\begin{enumerate}
+
+
+\item $X$ es localmente compacto.
+\item Existe en X un entorno de cero compacto.
+\item Existe en $X$ un entorno de cero precompacto.
+\item La dimensión de $X$ es finita.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+\begin{itemize}
+\item[]
+\item 4. $\Rightarrow$ 1. Como $X$ tiene dimensión finita, como consecuencia del Teorema de Tihonov sabemos que su topología es equivalente a la topología inducida por la norma euclídea en la misma dimensión de $X$. Como la topología inducida por la norma euclídea es localmente compacta, la topología de $X$ también lo será. 
+\item 1. $\Rightarrow$ 2. $\Rightarrow$ 3. Son evidentes.
+\item 3. $\Rightarrow$ 4. Sea $U$ un entorno de cero precompacto en $X$. Entonces, por definición, existirá un subconjunto finito $F$ de $X$ tal que, fijando $\lambda=\frac{1}{2}$, $U\subset F + \lambda U$. Si $M$ es el subespacio de $X$ generado por $F$, $M$ tiene dimensión finita y, por tanto, es cerrado en $X$. Como $U$ está contenido en $M+\lambda U$ y es precompacto (por tanto, acotado), el \hyperref[lm:d01]{Lema de Riesz} nos dice que $U\subset M$. Como sabemos además que $U$ es absorbente podemos deducir que $X=M$, por lo que $X$ tiene dimensión finita. 
+\end{itemize}
+\end{proof}
+
+Como hemos visto, el \hyperref[thm:d05]{Teorema de Tihonov} $(1935)$ extiende al Teorema de Hausdorff $(1932)$ para espacios normados de dimensión finita. Análogamente, el \hyperref[lm:d01]{Lema de Riesz} y el \hyperref[thm:d04]{Teorema de Riesz} son extensiones de los conocidos resultados para estos espacios. Como consecuencia de este último teorema, podemos deducir que todo subconjunto precompacto de un EVT de dimensión infinita tiene interior vacío. Esto tiene un gran impacto cuando trabajamos en espacios de funciones, por lo que volveremos a ello más adelante. 
+
+\section{Convergencia uniforme y complitud}
+Las topologías vectoriales no son metrizables en general. Por tanto, las sucesiones pueden no ser suficientes para caracterizar la topología. Sin embargo, generalizando el concepto de sucesión, es posible manejar algunos aspectos de topologías generales como si fuesen metrizables. 
+
+\begin{definicion}
+Un conjunto dirigido es un conjunto no vacío $\Lambda$ dotado de un preorden, $\leq$, verificando que para cualesquiera $\lambda_{1},\lambda_{2}\in\Lambda$, existe un $\lambda\in\Lambda$ tal que $\lambda_{1}\leq\lambda$ y $\lambda_{2}\leq\lambda$.
+
+Si $X$ es un conjunto no vacío, una red de elementos de $X$ es una aplicación $\phi : \Lambda \rightarrow X$, donde $\Lambda$ es un conjunto dirigido. De manera análoga a la notación para sucesiones, si $\phi: \Lambda \rightarrow X$ es una red, escribimos $x_{\lambda} = \phi(\lambda)$, $(x_{\lambda})_{\lambda\in\Lambda} = \phi$. 
+\end{definicion}
+
+\begin{definicion}
+Sea $X$ un espacio topológico. Decimos que una red $(x_{\lambda})\subset X$ converge a $x\in X$ y escribimos $(x_{\lambda}) \rightarrow x$ si para todo entorno $U$ de $x$ puede encontrarse un índice $\lambda_{0}\in\Lambda$ tal que 
+\begin{equation}
+\lambda\in\Lambda, \quad \lambda_{0}\leq\lambda \qquad \Rightarrow \qquad  x_{\lambda}\in U.
+\end{equation}
+\end{definicion}
+
+\begin{definicion}
+Decimos que $x$ es un valor adherente a la red $(x_\lambda)$ si para todo entorno $U$ de $x$ y para todo $\lambda\in\Lambda$ puede encontrarse $\mu \in \Lambda$ tal que $\lambda\leq\mu$ y $x_{\mu}\in U$. Es claro que si $(x_{\lambda}) \rightarrow x$,
+$x$ es un valor adherente a la red $(x_{\lambda})$, no siendo cierto el recíproco.
+\end{definicion}
+
+Sea $\phi = (x_{\lambda})_{\lambda\in\Lambda}$ una red en $X$. Sea $A(\phi) = \{ A_{\lambda} : \lambda\in\Lambda\}$ la familia de subconjuntos de $X$ definida por
+\begin{equation}
+A_{\lambda} = \{x_{\mu} : \mu\in\Lambda, \lambda\leq\mu\} \qquad (\lambda\in\Lambda).
+\end{equation}
+
+Entonces $A_{\lambda}$ cumple las siguientes condiciones: 
+\begin{enumerate}
+	\item $A_{\lambda} \neq \varnothing$, $\forall\lambda\in\Lambda$.
+	\item $\forall \lambda_{1},\lambda_{2}\in\Lambda$, existe $\lambda\in\Lambda$ tal que $A_{\lambda}\subset A_{\lambda_{1}}\bigcup A_{\lambda{2}}$ (Bastará que $\lambda_{1}\leq\lambda$ y $\lambda_{2}\leq\lambda$).
+\end{enumerate}
+
+Si $X$ es además un espacio topológico, podemos caracterizar la posible convergencia de $\phi$ en términos de la familia $A(\phi)$:
+
+\begin{enumerate}
+ \item Dado $x\in X$, $\phi$ converge a $x$ si, y solo si, cada entorno de $x$ contiene a un elemento de $A(\phi)$.
+ \item $x$ es valor adherente a la red $\phi$ si, y solo si, cada entorno de $x$ tiene intersección no vacía con cada elemento de $A(\phi)$.
+ \item El conjunto de los valores adherentes a $\phi$ coincide con $\bigcup_{A\in A(\phi)} \bar{A}$.
+  
+\end{enumerate}
+
+\begin{proposicion}
+Sea $X$ un espacio topológico, $A\subset X$ y $x\in X$. Las siguientes afirmaciones son equivalentes:.
+\begin{enumerate}
+	\item $x\in\bar{A}$.
+	\item Existe una red en $A$ que converge a x.
+	\item $x$ es un valor adherente a una red en $A$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{proposicion}
+Sea $X$ un espacio topológico Hausdorff y $(x_{\lambda})$ una red en $X$ que converge a $x\in X$. Entonces, $x$ es el único valor adherente a la red $(x_{\lambda})$. Recíprocamente, si toda red en $X$ converge, a lo sumo, a un punto de $X$, entonces $X$ es un espacio de Hausdorff. 
+\end{proposicion}
+
+\begin{proposicion}
+Sean X e Y espacios topológicos, $f: X \rightarrow Y$ una función y $x\in X$. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+	\item $f$ es continua en $x$.
+	\item $(x_{\lambda}) \rightarrow x \Rightarrow f(x_{\lambda}) \rightarrow f(x)$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{definicion}
+Se dice que una red $(x_{\lambda})_{\lambda\in\Lambda}$ de elementos de un EVT $X$ es una red de Cauchy si para cada entorno de cero $U$ puede encontrarse un índice $\lambda_{0}\in\Lambda$ tal que,
+\begin{equation}
+\lambda, \mu \in \Lambda, \lambda_{0}\leq\lambda, \lambda_{0}\leq\mu \quad \Rightarrow \quad x_{\lambda}-x_{\mu}\in U
+\end{equation}
+equivalentemente, $B_{\lambda_{0}}-B_{\lambda_{0}} \subset U$, donde $B_{\lambda_{0}} = \{ x_{\lambda} : \lambda\in\Lambda,\quad \lambda_{0}\leq\lambda \}.$
+\end{definicion}
+
+\begin{lema}
+Toda red de Cauchy en un EVT que posea un valor adherente, converge a dicho valor adherente.
+\end{lema}
+
+\begin{definicion}
+Sea $X$ un EVT y $d$ una semidistancia. Decimos que $d$ es invariante por traslaciones cuando cumple:
+\begin{equation}
+d(x+z, y+z) = d(x,y) \qquad (x,y,z\in X).
+\end{equation}
+
+\end{definicion}
+
+\begin{proposicion}
+Sea $X$ un EVT y $d$ una semidistancia completa que genera una topología de $X$ y es invariante por traslaciones. Entonces, toda red de Cauchy en $X$ es convergente. 
+\end{proposicion}
+
+\begin{definicion} \label{def:d01}
+Se dice que un EVT $X$ es completo cuando toda red de Cauchy en $X$ es convergente. Si ocurre solamente que toda sucesión de Cauchy es convergente, decimos que $X$ es secuencialmente completo. Análogamente se definen la complitud y la complitud secuencial de un subconjunto de un EVT.
+\end{definicion}
+
+\begin{proposicion}
+Sea $X$ un EVT cuya topología proviene de una semidistancia $d$ invariante por traslaciones. Entonces, son equivalentes: 
+\begin{enumerate}
+	\item $X$ es completo.
+	\item $X$ es secuencialmente completo.
+	\item La distancia $d$ es completa.
+\end{enumerate}
+
+\end{proposicion}
+
+\section{Aplicaciones lineales entre EVT}
+\begin{definicion}
+Sean $X$ e $Y$ EVT y sea $F:X\rightarrow Y$ una aplicación. Decimos que $F$ es uniformemente continua si para cada entorno de cero $V$ en $Y$ existe un entorno de cero $U$ en $X$ tal que $F(x) - F(y) \in V$, para todos $x,y\in X$ tales que $x-y\in U$. 
+\end{definicion}
+
+\begin{proposicion}
+Sean $X$ e $Y$ dos EVT y $T:X\rightarrow Y$ una aplicación lineal. Son equivalentes:
+\begin{itemize}
+	\item $T$ es uniformemente continua.
+	\item $T$ es continua.
+	\item $T$ es continua en cero, esto es, $T^{-1}(V)$ es entorno de cero en $X$ para cada entorno de cero $V$ en $Y$. 
+\end{itemize}
+\end{proposicion}
+
+\section{Topologías iniciales}
+\begin{definicion}
+Sea $X\neq 0$ un conjunto, $\{(X_{i},\mathcal{T}_{i}), i\in I\}$ espacios topológicos, $\{f_{i} : i\in I \}$ una familia de aplicaciones definidas en $X$, cada una tomando valores en un espacio topológico $X_{i}$ respectivamente. Llamamos topología inicial para $\{ f_{i} : i\in I\}$ a la mínima topología en $X$ que hace continuas a todas las aplicaciones $f_{i}$. 
+\end{definicion}
+
+\begin{proposicion}
+Sea $X$ un espacio vectorial, $\{X_{i} : i\in I \}$ una familia de EVT y, para cada $i \in I$, sea $f_{i}$ una aplicación lineal de $X$ en $X_{i}$. Entonces, la topología inicial en $X$ para la familia $\{f_{i} : i\in I \}$ es una topología vectorial en X. Si, para cada $i\in I$, $\mathcal{B}_{i}$ es una base de entornos de cero en $X_{i}$, la familia
+\begin{equation}
+\mathcal{B} = \left\{ \bigcup_{j\in J} f_{j}^{-1}(U_{j}) : \quad J \subset I,  J \text{ } finito,\text{ } U_{j}\in \mathcal{B}_{j} \text{ } \forall j\in J\right\}
+\end{equation}
+
+es base de entornos de cero en $X$ para dicha topología inicial. 
+\end{proposicion}
+
+\section{EVT Localmente Convexos}
+
+\begin{definicion}
+Sea $X$ un espacio vectorial. Una topología localmente convexa en $X$ es una topología vectorial que admite una base de entornos de cero convexos. Un espacio localmente convexo (ELC) es un par $(X,\mathcal{T})$ formado por un espacio vectorial $X$ y una topología localmente convexa $\mathcal{T}$ en $X$. Si no hay lugar a confusión, diremos que $X$ es un ELC.
+\end{definicion}
+
+\begin{definicion}
+Sea $X$ un espacio vectorial y $E\subset X$. Llamamos envolvente convexa de $E$ a la intersección de todos los subconjuntos convexos de $X$ que contienen a $E$. Esto es, al menor subconjunto convexo de $X$ que contiene a $E$.
+\end{definicion}
+
+\begin{teorema}[Caracterización de los entornos de cero y de las bases de entornos de cero en un ELC]
+Todo ELC posee una base de entornos de cero formada por conjuntos equilibrados y convexos.
+\end{teorema}
+
+\begin{observacion}
+Consecuencias directas:
+\begin{itemize}
+	\item En un EVT, el cierre y el interior de un conjunto convexo son conjuntos convexos.
+	\item En cualquier EVT, la envolvente convexa de un conjunto abierto es abierta.
+\end{itemize}
+\end{observacion}
+
+
+\begin{definicion}
+Sea $X$ espacio vectorial, decimos que una aplicación $\nu:X\rightarrow\mathds{R}$ es una pseudonorma cuando cumple: 
+\begin{enumerate}
+	\item $\nu (x+y) \leq \nu(x)+\nu (y)\quad \forall x,y \in X$.
+	\item $\lambda \in \mathds{D} \Rightarrow \nu (\lambda x) \leq \nu (x)\quad \forall x\in X$.
+	\item $\lim_{n\rightarrow \infty} \nu (\frac{x}{n}) = 0 \quad \forall x \in X$.
+	
+\end{enumerate}
+Por otro lado, una aplicación $p:X\rightarrow\mathds{R}$ es una seminorma en $X$ cuando:
+\begin{enumerate}
+	\item $p(x+y) \leq p(x)+p(y)\quad \forall x,y \in X$.
+	\item $p (\lambda x) \leq \vert \lambda \vert p(x)\quad \forall \lambda \in \mathds{K}, \quad \forall x\in X$.	
+\end{enumerate}
+
+De la definición podemos ver cómo toda seminorma es una pseudonorma.
+\end{definicion}
+
+
+El siguiente resultado refleja lo relacionadas que estan las seminormas con la convexidad local en los EVT: 
+
+\begin{teorema}[Caracterización de las topologías localmente convexas]
+
+Una topología $\mathcal{T}$ en un espacio vectorial $X$ es localmente convexa si, y solo si, es la topología asociada a una familia de seminormas en $X$. Más concretamente, sea $X$ un ELC y sea $\mathcal{B}$ una familia de entornos de cero convexos y equilibrados. Si para cada $U\in\mathcal{B}$, $\phi_{U}$ es el funcional de Minkowski de $U$, la topología de partida en $X$ es la asociada a la familia de seminormas $\{\phi_{U} : U\in\mathcal{B}\}$. 
+\end{teorema}
+
+\begin{corolario}
+Todo ELC separado es isomorfo a un subespacio de un producto de espacios normados.
+\end{corolario}
+\section{EVT Metrizables}
+
+%\begin{definicion}
+%Sea $\upphi$ una familia arbitraria de pseudonormas en un espacio vectorial $X$. Para cada $\phi\in\upphi$, sea $\mathcal{T}_{\phi}$ la topología asociada a la pesudonorma $\phi$. Llamaremos topología asociada a la familia de pseudonormas $\upphi$ a la topología 
+%\begin{equation}
+%\mathcal{T}_{\upphi} = \sup\{\mathcal{T}_{\phi} : \phi \in \upphi\}.
+%\end{equation}
+%\end{definicion}
+
+
+Decimos que un espacio topológico $(X,\mathcal{T})$ es metrizable si es homeomorfo a un espacio métrico, esto es, si existe una distancia en $X$ que genere su topología. Por tanto, en el contexto de los EVT, es natural preguntarse en qué casos dicha topología es vectorial y, análogamente, cuándo podemos metrizar o asociar una distancia a una topología vectorial dada. En esta sección introduciremos formalmente el concepto de metrizabilidad en espacios topológicos y daremos respuesta a las dos cuestiones planteadas.
+
+\begin{definicion}
+Sean $X$ un espacio vectorial y $\nu$ una pseudonorma en $X$. Definiendo para cada $\varepsilon > 0$, $U_{\varepsilon} = \{ x\in X : \nu (x) \leq \varepsilon \}$ tenemos que $\{U_{\varepsilon} : \varepsilon > 0 \}$ es una base de entornos de cero para la topología vectorial en $X$ asociada a la pseudonorma $\nu$, con la que $X$ es un EVT pseudonormable (seminormable cuando $\nu$ es una seminorma). 
+\end{definicion}
+
+\begin{definicion}
+Un espacio topológico $X$ es semimetrizable si existe una semidistancia d en $X$ que genera su topología. Si la semidistancia d es una distancia, decimos que el espacio topológico $X$ es metrizable. 
+\end{definicion}
+
+\begin{observacion}
+La topología asociada a una pseudonorma es siempre semimetrizable, esto es, existe una semidistancia que genera la topología. Concretamente, si $\nu : X \rightarrow \mathds{R}$ es una pseudonorma, la aplicación $d : X \times X \rightarrow \mathds{R} $ dada por $d(x,y) = \nu (x-y)$, es una semidistancia que genera la topología. 
+\end{observacion}
+
+
+La primera cuestión es agenciada por el resultado:
+
+%\begin{definicion}
+%Sea $X$ un espacio vectorial y $d:X\times X \rightarrow \mathds{R}$ una semidistancia. Decimos que $d$ es invariante por traslaciones si 
+%\begin{equation}
+%d(x+z, y+z) = d(x,y) \qquad (x,y,z\in X).
+%\end{equation}
+%\end{definicion}
+
+\begin{teorema}
+Sea $X$ un espacio vectorial y sea $d$ una semidistancia en $X$ verificando: 
+\begin{enumerate}
+	\item $d$ es invariante por traslaciones.
+	\item Si $(\lambda_{n})$ es una sucesión convergente a cero en $\mathds{K}$, entonces $d(\lambda_{n}x,0)\rightarrow 0$ para cada $x\in X$.
+	\item Si $(x_{n})$ es una sucesión en $X$ tal que $d(x_{n},0)\rightarrow 0$, entonces $d(\lambda x_{n},0) \rightarrow 0$ para cada $\lambda\in\mathds{K}$.
+\end{enumerate} 
+Entonces la topología $\mathcal{T}$ asociada a $d$ es una topología vectorial. Además, $(X,\mathcal{T})$ es completo si, y sólo si, $d$ es completa. 
+\end{teorema}
+%\begin{proof}
+%La importancia de este teorema radica en que no se supone la continuidad (conjunta) del producto por escalares en (0, 0) y conseguirla es la única parte no evidente de la demostración.
+%pág. 247 del Libro análisis funcional. ponte otro día.
+%\end{proof}
+
+%De este resultado, podemos ver cómo 2 y 3 hacen posible que la multiplicación por escalares sea contínua para la topología, con lo que nos aseguramos uno de los dos requisitos para que la topología asociada a una distancia sea vectorial. 
+
+La segunda problemática planteada se resuelve en el siguiente resultado:
+
+\begin{teorema}
+[Criterio de metrizabilidad de Birkhoff-Kakutani]
+Si X es un EVT, equivalen: 
+\begin{enumerate}
+  \item X es pseudonormable.
+  \item X es semimetrizable.
+  \item X tiene una base numerable de entornos de cero.
+\end{enumerate}
+\end{teorema}
+
+Es decir, un EVT es metrizable si, y solo si, es separado y tiene una base numerable de entornos de cero. 
+
+Ya tenemos todas las herramientas necesarias para presentar los dos siguientes conceptos, de los que haremos uso durante el trabajo: 
+
+\begin{definicion}
+Llamamos F-espacio a un EVT completo metrizable. Si $X$ tiene la topología asociada a una pseudonorma $\nu$, $X$ es un F-espacio cuando toda serie absolutamente convergente es convergente: 
+\begin{equation}
+x_{n}\in X\text{ } \forall n \in \mathds{N}, \text{ } \sum_{n=1}^{\infty} \nu (x_{n}) < \infty \Rightarrow \sum_{n\geq 1} x_{n} < \infty
+\end{equation}
+\end{definicion}
+
+
+\begin{definicion}
+Llamamos espacio de Fréchet a un F-espacio localmente convexo. Esto es, un espacio localmente convexo que es completo y metrizable.
+\end{definicion}
+
+\section{Teoría de dualidad}
+\begin{definicion}
+Dado un espacio vectorial $X$, denotaremos como $X^{\hash}$ a su dual algebraico, esto es, al espacio formado por los funcionales lineales en $X$. Si $(X,\tau)$ es un EVT, definimos su dual topológico $(X,\tau)^{*}$ como el subespacio de $X^{\hash}$ formado por los funcionales lineales y $\tau$-continuos en $X$. Si $\tau$ se sobrentiende, escribimos $X^{*}$.
+\end{definicion}
+
+\begin{corolario}
+Sea $X$ un espacio vectorial, $U$ un subconjunto absorbente y convexo de $X$ y $x_{0}\in X$ tal que $x_{0}\notin U$. Existe un funcional lineal $f$ en $X$ tal que 
+
+\begin{equation}
+\text{Re } f(x)\leq 1 \quad (x\in U) \qquad y \qquad \text{Re }f(x_{0})\geq 1.
+\end{equation}
+
+\end{corolario}
+\begin{proof}
+Sea $\mu$ el funcional de Minkowski en $U$. Entonces, $\mu$ es sublineal en $X$ y se tiene que 
+\begin{equation}
+\{x\in X : \mu (x) < 1\} \subset U \subset \{x\in X : \mu (x) \leq 1\}
+\end{equation}
+por lo que $\mu (x_{0}) \geq 1$ y $\lambda \mu (x_{0}) \leq \mu(\lambda x_{0})$ se cumple para todo  $\lambda > 0$ por la homogeneidad de $\mu$. Por tanto, tomando el subespacio $\mathds{R}\{x_{0}\}$ de $X$ y el funcional lineal que a cada $\lambda\in\mathds{R}$ le asigna  $g(\lambda)=\lambda\mu(x_{0})$, definido en $\mathds{R}\{x_{0}\}$, el Teorema de Hahn-Banach nos proporciona un funcional $f\in X^{\hash}$ que cumple
+\begin{equation}
+f(x) \leq \mu (x) \quad (x\in X) \qquad y \qquad f(x_{0}) = \mu (x_{0}).
+\end{equation}
+\end{proof}
+
+\begin{corolario}
+Sea $X$ un EVT. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+\item $X^{*}$ separa los puntos de $X$.
+\item Para cada $x_{0}\in X\setminus \{0\}$ existe una seminorma continua $\phi$ en $X$ tal que $\uppsi(x_{0})\neq 0$.
+\item La intersección de todos los entornos convexos de cero en $X$ se reduce a $\{0\}$.
+\end{enumerate}
+\end{corolario}
+\begin{proof}
+\begin{itemize}
+\item[]
+\item 1. $\Rightarrow$ 2. Si $X^{*}$ separa los puntos de $X$, fijando un $x_{0}\in X\setminus \{0\}$ y un $f\in X^{*}$ (el cual, por $1$, cumplirá que  $f(x_{0}) \neq 0$), podemos definir la seminorma continua $\upvarphi = |f|$, que verifica $\upvarphi (x_{0}) \neq 0$.
+
+
+\item 2. $ \Rightarrow$ 3.  Sea $\uppsi$ la seminorma definida en $2$. Entonces, los entornos de cero convexos asociados a la topología de la seminorma vendrán dados por $U_{x_{0}} = \{x\in X : \uppsi(x) < \uppsi (x_{0}) \}$ y cumplirán que $x_{0}\notin U_{x_{0}}$, para cada $x_{0}\in X\setminus \{0\}$. Por tanto, $\bigcap_{x_{0}\in X\setminus \{0\}} U_{x_{0}} = \{0\}$.
+
+
+\item 3. $ \Rightarrow$ 1. El corolario anterior nos proporciona, para cada $x_{0}\in X\setminus \{0\}$, un funcional $f\in X^{*}$ cumpliendo que $f(x_{0}) = \mu (x_{0}) \neq 0$. 
+\end{itemize}
+\end{proof}
+\begin{corolario}
+Sea $X$ un ELC. Entonces equivalen:
+\begin{enumerate}
+\item $X^{*}$ separa los puntos de $X$.
+\item $X$ es separado. 
+\end{enumerate}
+\end{corolario}
+\begin{proof}
+En un ELC todos los entornos de cero son localmente convexos, por lo que la equivalencia entre 1. y 3. del corolario anterior se traduce en este resultado. 
+\end{proof}
+\begin{teorema}
+Sean $A$ y $B$ subconjuntos no vacíos, convexos, disjuntos, de un ELC $X$ tales que $A$ es cerrado y $B$ es compacto. Entonces, existen $f\in X^{*}$ y $\alpha,\beta\in\mathds{R}$ tales que 
+\begin{align*}
+\text{Re}f(a) \leq \alpha < \beta \leq \text{Re} f(B) \qquad(a\in A \text{, }b\in B).
+\end{align*}
+\end{teorema}
+\begin{observacion}Si tomamos $B = \{x\}$ donde $x\in X\setminus A$, el teorema anterior nos muestra que $f$ separa puntos de $X$. 
+\end{observacion}
+
+\section{Topología débil y débil-*}
+
+La compacidad es una propiedad muy útil y deseable pero difícil de garantizar en EVTs de dimensión infinita pues, como consecuencia del \hyperref[thm:d04]{Teorema de Riesz para EVTs separados}, cualquier compacto en tales espacios tiene interior vacío. Esto se materializa, por ejemplo, en los espacios de Banach de dimensión infinita, donde la topología de la norma presenta pocos compactos.
+
+Por esta razón, en dichos espacios conviene trabajar con topologías más pequeñas que, preservando la continuidad de funcionales del dual, presenten más conjuntos compactos. Estas topologías se conocen como la topología débil y débil-*.
+
+\begin{definicion}
+Sea $X$ un espacio vectorial, $Y$ un subespacio del dual algebraico $X^{\#}$ que separa los puntos de $X$. Entonces $(X,Y)$ es un par dual. Escribimos $\langle x,y\rangle$ para denotar la acción de $y\in Y \leq X^{\#}$ sobre $x\in X$. Como X separa los puntos de $Y$ y $X\leq Y^{\#}, (Y,X)$ es par dual.
+\end{definicion}
+
+\begin{definicion}
+Sea $(X,Y)$ par dual. La topología inicial en $X$ para los elementos de $Y$ se denota por $\sigma(X,Y)$ y se denomina la topología débil en $X$ asociada al par dual $(X,Y)$. Se trata de una topología localmente convexa y separada en X, asociada a la familia de seminormas 
+$$\varphi_{y}(x) = \vert\langle x,y\rangle\vert  \quad (x\in X, y\in Y).$$
+
+Los conjuntos de la forma 
+$$U(J,\varepsilon) = \{ x\in X :  \vert\langle x,y\rangle\vert \leq \varepsilon \quad \forall y\in J\}$$
+donde $J$ es un subconjunto finito de $Y$ y $\varepsilon > 0$ forman una base de entornos de cero para  $\sigma(X,Y)$.
+\end{definicion}
+
+\begin{proposicion}
+
+Sea $(X,Y)$ un par dual.
+\begin{itemize}
+	\item Un funcional lineal $f$ en $X$ es $\sigma (X,Y)$-continuo si, y sólo si, existe un $y_{0}\in Y$ tal que
+	$$f(x) = \langle x,y_{0}\rangle, \quad x\in X.$$
+	\item La topología $\sigma (X,Y)$ es compatible con el par dual $(X,Y)$, esto es, $(X,\sigma (X,Y))^{*} = Y$; y esta es la mínima topología en $X$ con esa propiedad.
+\end{itemize}
+\end{proposicion}
+
+\begin{definicion}
+
+Sea $X$ un ELC separado, $(X,X^{*})$ par dual.
+\begin{itemize}
+	\item $\sigma (X,X^{*})$ es la topología débil de X.
+	\item $\sigma (X^{*},X)$ es la topología débil-* de $X^{*}$ asociada al par dual $(X^{*},X)$.
+\end{itemize}
+\end{definicion}
+
+\begin{observacion}
+ Se trata de la menor topología en $X^{*}$ que hace continuos a los elementos de $X$. En particular, $(X^{*},\sigma (X^{*},X))^{*} = X$.
+\end{observacion}
+
+\begin{observacion}
+Se trata de la topología en $X^{*}$ de la convergencia puntual sobre los elementos de $X$. Esto es, la topología en $X^{*}$ de la convergencia uniforme sobre los subconjuntos finitos de $X$.
+\end{observacion}
+
+\begin{observacion}
+Sea $X$ ELC. En general, es posible que no tengamos en $X^{*}$ ninguna topología destacable. En ese caso, sabemos que al menos dispondremos de la topología débil-*.
+\end{observacion}
+\section{Espacio de funciones Test}
+\begin{definicion}
+Sea $\Omega$ un conjunto abierto no vacío de $\mathds{R}^{d}$. Llamamos multi-índice a la d-tupla  $\alpha = (\alpha_{1},\ldots,\alpha_{d})$ de enteros no negativos. A cada multi-índice $\alpha$, podemos asociar un operador diferencial
+\begin{equation}
+D^{\alpha} = 
+\left(\frac{\partial}{\partial x_{1}}\right)^{\alpha_{1}}\cdots \left(\frac{\partial}{\partial x_{d}}\right)^{\alpha_{d}}
+\end{equation}
+cuyo orden es  $\vert\alpha\vert = \alpha_{1} + \dotsb + \alpha_{d}$.
+\end{definicion}
+\begin{observacion}
+Cuando $\vert\alpha\vert = 0$, tenemos que $D^{\alpha}f=f$.
+\end{observacion}
+
+\begin{definicion}
+Una función $f$ definida en $\Omega \subset \mathds{R}^{d}$ pertenece a $C^{\infty}(\Omega)$ si cumple que $D^{\alpha}f\in C(\Omega)$ para todo multi-índice $\alpha$.
+\end{definicion}
+
+\begin{definicion}
+Sea $K$ un compacto en $\mathds{R}^{d}$. Llamamos $\mathcal{D}(K)$ o $\mathcal{D}_K$ al espacio de todas las $f\in C^{\infty}(\mathds{R}^{d})$ cuyo soporte queda contenido en $K$. Si $K\subset\Omega$, entonces $\mathcal{D}(K)$ se puede identificar con un subespacio de $C^{\infty}(\Omega)$.
+
+A continuación veremos como, dotado de la topología adecuada, $C^{\infty}(\Omega)$ es un espacio de Fréchet con la propiedad de Heine-Borel y, por tanto, $\mathcal{D}(K)$ es un subespacio cerrado suyo, siempre que $K\subset\Omega$.
+
+
+Para cada $N\in\mathds{N}$, definimos la seminorma 
+\begin{equation}
+p_{N}(f) = \max \{ \vert D^{\alpha}f(x)\vert : x\in K_{N}, \vert\alpha\vert \leq N\}
+\end{equation}
+
+siendo $K_{i}$ conjuntos compactos que cumplen:
+\begin{itemize}
+	\item $K_{i} \subset int(K_{i+1})$.
+	\item $\Omega = \bigcup K_{i}$.	
+\end{itemize}
+\end{definicion}
+
+\begin{lema}
+La familia de seminormas $\{p_{N}\}_{N\in\mathds{N}}$ define una topología metrizable y localmente convexa en $C^{\infty}(\Omega)$. Para esta topología, los conjuntos 
+
+\begin{equation}
+ V_{N} = \left\{ f \in C^{\infty}(\Omega): p_{N}(f) < \frac{1}{N}\right\}
+\end{equation}
+
+con $N\in\mathds{N}$ forman una base local.
+\end{lema}
+
+%\begin{proof}
+%1.37 y remark c de 1.38
+%\end{proof}
+
+\begin{observacion}
+    Las normas 
+\begin{equation}
+    \parallel \phi \parallel_N = \max \left\{ \vert D^{\alpha}f(x)\vert : x\in \Omega, \vert\alpha\vert \leq N\right\}
+\end{equation}
+con $N\in\mathds{N}$ y $\phi\in\mathcal{D}(\Omega)$, cuando son restringidas a cada $\mathcal{D}_K$ fijo, inducen la misma topología que las seminormas $p_N$.
+\end{observacion}
+\begin{observacion}
+Para cada $x\in\Omega$, el funcional $f\rightarrow f(x)$ es continuo para dicha topología.
+\end{observacion}
+
+
+\begin{lema}
+$C^{\infty}(\Omega)$ es un espacio de Fréchet.
+\end{lema}
+%\begin{proof}
+%Sea $\{f_{i}\}$ una sucesión de Cauchy  en $C^{\infty}(\Omega)$. fijando un $N\in\mathds{N}$, tenemos que para i y j suficiéntemente avanzados, $f_{i} - f_{j} \in V_{N}$ y $\vert D^{\alpha}f_{i}(x) - D^{\alpha}f_{j}(x) \vert < \frac{1}{N}$, $\forall x \in K_{N}$ siempre que $\vert \alpha \vert \leq N$.  Tenemos por tanto convergencia uniforme de cada $D^{\alpha}f_{i}$ sobre cada compacto $K_{N}$ a, llamemos, $g_{\alpha}$. En particular, para  $\vert\alpha\vert = 0$, $f_{i}(x) \rightarrow g_{0}(x)$. Por lo que $g_{0}\in C^{\infty}(\Omega)$.
+%\end{proof}
+
+\begin{lema}
+$C^{\infty}(\Omega)$ tiene la propiedad de Heine-Borel.
+
+\end{lema}
+
+
+\begin{definicion}
+Consideramos ahora el espacio vectorial $\mathcal{D}(\Omega) = \bigcup \mathcal{D}_{K}$. Entonces, $\phi\in \mathcal{D}(\Omega)$ si, y solo si, $\phi\in C^{\infty}(\Omega)$ y $\mathrm{supp}(\phi) = K$, para algún subconjunto compacto $K$ de $\Omega$.
+\end{definicion}
+
+\begin{definicion}
+Para cada compacto $K\subset\Omega$, $\tau_K$ denota la topología heredada del espacio de Fréchet $C^{\infty}(\Omega)$.  
+\end{definicion}
+
+ Para cada $\mathcal{D}_{K}$, $\tau_K$ no es completa y por tanto tampoco lo será en $ \mathcal{D}(\Omega)$. Es por esto que buscaremos definir una topología $\tau$ en $ \mathcal{D}(\Omega)$ que sí lo sea.
+% Para ver esto podemo escoger $\phi$.. (copiar ejemplo pag.151)
+\begin{definicion}
+
+\begin{itemize}
+\item[]
+\item Llamaremos $\beta$ al conjunto de los $W\subset  \mathcal{D}(\Omega)$ convexos y equilibrados tales que $ \mathcal{D}_{K}\cap W \in \tau_{K}$ para todo compacto $K\in \Omega$.
+\item $\tau = \bigcup \phi + W$ tales que $\phi\in \mathcal{D}(\Omega)$ y $ W\in\beta$.
+\end{itemize}
+\end{definicion}
+
+\begin{teorema}
+\begin{enumerate}
+\item[]
+\item $\tau$ es una topología en $ \mathcal{D}(\Omega)$ y $\beta$ es una base local para esta topología.
+\item  $ \mathcal{D}(\Omega)$  dotado de la topología $\tau$ es un EVT localmente convexo.
+\end{enumerate}
+\end{teorema}
+\begin{proof}
+
+\begin{enumerate}
+
+\item[]
+\item Supongamos que $V_{1},V_{2}\in
+\tau$, $\phi\in V_{1}\cap V_{2}$. Entonces, atendiendo a la definición de $\beta$, para demostrar 1. bastará con probar que existe $W\in\beta$ tal que $\phi + W \subseteq V_{1}\cap V_{2}$. 
+
+Como $V_{1},V_{2}\in
+\tau$ y atendiendo a la construcción de $\tau$, sabemos que existen $\phi_{i}\in\mathcal{D}(\Omega )$ y $W_{i} \in \beta$ tales que $\phi\in \phi_{i} + W_{i} \subset V_{i}$, para $i=1,2$.
+
+Tomando un $K$ lo suficiéntemente grande como para que $\phi_{1},$ $\phi_{2}\in \mathcal{D}_{K}$, tendremos que $\mathcal{D}_{K}\cap W_{i}$ es abierto para la topología $\tau_{K}$ y, por tanto, $\phi-\phi_{i} \in (1-\delta_{i})W_{i}$ para algún $\delta_{i}>0$. Como escogimos $W_{i}$ convexo, tenemos que $\phi-\phi_{i} + \delta_{i} W_{i} \subset (1-\delta_{i})W_{i} + \delta_{i} W_{i} = W_{i} $ y por tanto $\phi + \delta_{i} W_{i} \subset \phi_{i} + W_{i} \subset V_{i}$, para $i=1,2$. 
+
+Por tanto, hemos encontrado el $W = (\delta_{1} W_{1}) \cap (\delta_{2} W_{2})\in \beta$ que necesitábamos. 
+
+\item Tomemos ahora $\phi_{1}$, $\phi_{2}\in \mathcal{D}(\Omega)$, y sea 
+\begin{equation}
+W = \left\{ \phi\in\mathcal{D}(\Omega) : \quad \parallel \phi\parallel_{0} < \parallel \phi_{1}-\phi_{2}\parallel_{0} \right\}
+\end{equation} 
+donde $\parallel \cdot \parallel_{0} $ es la norma definida en esta sección. Entonces $W\in\beta $ y $\phi_{1}\notin \phi_{2} + W$. Por tanto, $\{\phi_{1}\}$ es un conjunto cerrado para la topología $\tau$. 
+
+Como cada $W\in\beta$ es convexo, tenemos que 
+\begin{equation}
+(\uppsi_{1} + \frac{1}{2}W) + (\uppsi_{2} + \frac{1}{2}W) = (\uppsi_{1}+\uppsi_{2}) + W
+\end{equation}
+para todas $\uppsi_{1},$ $\uppsi_{2}\in \mathcal{D}(\Omega)$ siempre que $\uppsi_{1} \neq \uppsi_{2}$. Por tanto, la suma es $\tau$-continua.
+
+Tomemos ahora un escalar $\alpha_{0}$ y una $\phi_{0}\in\mathcal{D}(\Omega)$.  Entonces, para toda $\phi\in \mathcal{D}(\Omega)$ y todo escalar $\alpha$ se cumplirá:
+\begin{equation}
+\alpha\phi - \alpha_{0}\phi_{0} = \alpha(\phi - \phi_{0}) + (\alpha - \alpha_{0})\phi_{0}.
+\end{equation}
+
+Además, si $W\in\beta$ existirá un $\delta>0$ tal que $\delta\phi_{0}\in\frac{1}{2}W$ y podremos escoger una constante $c$ que cumpla $2c(\vert\alpha_{0}\vert + \delta)=1$. Como $W$ es equilibrado y convexo, tenemos que
+\begin{equation}
+\alpha\phi - \alpha_{0}\phi_{0} \in W
+\end{equation}
+siempre que $\phi - \phi_{0}\in cW$ y $\vert \alpha - \alpha_{0} \vert < \delta$.
+\end{enumerate} 
+\end{proof}
+
+\begin{teorema}
+\begin{enumerate}
+\item[]
+\item Un conjunto convexo y equilibrado en $\mathcal{D}(\Omega)$ es abierto si, y solo si, pertenece a $\beta$.
+\item La topología $\tau_{K}$ de cada $\mathcal{D}_{K}\subset\mathcal{D}(\Omega)$ coincide con la topología $\tau$ restringida a $\mathcal{D}_{K}$.
+\item Sea $E$ un subconjunto acotado de $\mathcal{D}(\Omega)$. Entonces existe un $K\in\Omega$ tal que $E\subset\mathcal{D}_{K}$. Además, existen constantes $M_{N}<\infty$ tales que $\parallel \phi \parallel_{N} \leq M_{N}$, $\forall \phi\in E$ , $\forall N\in\mathds{N}$. 
+\item $\mathcal{D}(\Omega)$ tiene la propiedad de Heine-Borel.
+\item En $\mathcal{D}(\Omega)$, toda sucesión de Cauchy es convergente. 
+\end{enumerate}
+\end{teorema}

@@ -1,0 +1,404 @@
+\chapter{Teoría de Distribuciones}\label{ch:cuarto-capitulo}
+
+\section{Distribuciones}
+La Teoría de Distribuciones, desarrollada por L. Schwartz durante las décadas de 1940 y 1950, surgió como respuesta a la necesidad de manejar ``funciones generalizadas''  desde varias ramas de la Física, donde el concepto clásico de función como observable físico presentaba limitaciones de precisión. En aquel momento ya se utilizaban formalismos como la $\delta$ de Dirac que funcionaban y daban respuesta a esta problemática sin haber sido aún integrados dentro de una teoría matemática que les diese respaldo. Planteada esta necesidad, se inició la búsqueda de una clase de objetos que extendiesen la noción de función y sobre la que se pudiese generalizar el cálculo diferencial clásico.  
+
+
+Dicha clase de objetos tendrá como ojetivo albergar a todas las funciones continuas, permitir que cada objeto perteneciente a ella tenga derivadas parciales y que estas de nuevo sean un objeto de la misma clase. Además, se espera que dicho concepto de derivada case con el concepto clásico de derivada y con las propiedades existentes para funciones diferenciables.  
+
+Una primera aproximación intuitiva puede exponerse tomando una función $f: \mathds{R}\rightarrow \mathds{K}$ a la que únicamente le exigimos ser localmente integrable. El salto a la visión distribucional consiste en ver esta función como un operador $\phi \rightarrow \int f \phi$, que asocia a cada ``función test''  $\phi$ de soporte compacto el valor $\int f \phi$. Esto es, que nos permita asomarnos a los valores que toma $f$ en el soporte de $\phi$.   
+
+Durante las siguientes secciones expondremos los contenidos necesarios para llegar a una definición rigurosa del concepto de distribución y posteriormente presentaremos los resultados principales de esta teoría. 
+\subsection{Definición}
+\begin{definicion}
+Una distribución es un funcional lineal en $\mathcal{D}(\Omega)$ que es continuo con respecto a la topología $\tau$. Denotaremos $\mathcal{D}'(\Omega)$ al espacio de las distribuciones.
+\end{definicion}
+
+\begin{teorema}\label{thm:d06}
+Sea $\Lambda$ un funcional lineal sobre $\mathcal{D}(\Omega)$. Equivalen: 
+\begin{enumerate}
+\item $\Lambda\in \mathcal{D}'(\Omega).$
+\item Para cada compacto $K\subset \Omega$, podemos contrar $N\in\mathds{N}$, $C<\infty$ tales que $\vert \Lambda\phi \vert \leq C \parallel \phi \parallel_{N}$, $\forall \phi \in \mathcal{D}_{K}$.
+\end{enumerate}
+\end{teorema}
+\begin{observacion}
+Cada $x\in\Omega$ determina una distribución $\delta_{x}\in\mathcal{D}'(\Omega)$ dada por $\delta_{x}(\phi) = \phi(x)$.
+\end{observacion}
+
+\subsection{Funciones vistas como distribuciones} %y medidas
+
+
+Dada $f:\Omega\rightarrow\mathds{K} $ localmente integrable, fijemos un compacto $K\subset\Omega$. Definimos $$\langle \Lambda_{f}, \phi\rangle = \int_{\Omega}\phi(x)f(x)dx \qquad (\phi\in\mathcal{D}(\Omega)).$$
+
+Entonces, se cumple que 
+
+\begin{equation}
+\vert \langle \Lambda_{f},\phi \rangle \vert = \left\vert \int_{\Omega}\phi(x)f(x)dx \right\vert \leq \left( \int_{K} \vert f \vert \right) \cdot \parallel\phi\parallel_{0}
+\end{equation}
+
+siempre que $\phi\in \mathcal{D}_{K}$. Como esto es cierto para cada compacto $K\subset\Omega$, por el \autoref{thm:d06} sabemos que $\Lambda_{f}\in\mathcal{D}'(\Omega)$. A la distribución $\Lambda_{f}$ la llamaremos distribución asociada a $f$ y diremos que este tipo de distribuciones son ``funciones''. 
+
+De manera similar, si $\mu$ es una medida de Borel en $\Omega$ con $\mu (K)<\infty$ para cada compacto $K\subset\Omega$, la igualdad
+\begin{equation}
+\Lambda_{\mu}(\phi) = \int_{\Omega} \phi d\mu \qquad (\phi\in \mathcal{D}(\Omega))
+\end{equation}
+define una distribución $\Lambda_{\mu}$ a la que llamaremos distribución asociada a $\mu$. 
+
+\section{Cálculo con distribuciones}
+
+En esta sección introduciremos algunos de los resultados que definen y demuestran la compatibilidad de las distribuciones con el cálculo diferencial clásico. 
+\subsection{Multiplicación por funciones}
+
+\begin{definicion}
+Sean $\Lambda\in \mathcal{D}'(\Omega)$ y $f\in C^{\infty}(\Omega)$. Definimos la distribución $f\Lambda\in\mathcal{D}'(\Omega)$ dada por
+\begin{equation}
+\langle f\Lambda,\phi\rangle = \langle \Lambda , f\phi\rangle
+\end{equation}
+para cada $\phi\in \mathcal{D}(\Omega) $.
+\end{definicion}
+
+\subsection{Derivadas de una distribución}
+\begin{definicion}
+Para cada multi-índice $\alpha = (\alpha_1,\ldots,\alpha_n)$, de aquí en adelante denotaremos:
+
+\begin{equation}
+D^{\alpha} = \left( \frac{\partial}{\partial x_{1}}\right)^{\alpha_{1}} \cdots \left(\frac{\partial}{\partial x_{n}} \right)^{\alpha_{n}}.
+\end{equation}
+\end{definicion}
+
+\begin{definicion}
+Sea $\alpha$ un multi-índice y sea $\Lambda\in\mathcal{D}'(\Omega)
+$. Para cada $\phi\in\mathcal{D}(\Omega)$ definimos la distribución derivada $\alpha$-ésima de $\Lambda$ mediante
+\begin{equation}
+\langle D^{\alpha}\Lambda,\phi\rangle = (-1)^{\vert\alpha\vert}\langle \Lambda,D^{\alpha}\phi\rangle.
+\end{equation}
+\end{definicion}
+
+\begin{definicion}
+
+Si $f$ es una función localmente integrable en $\Omega$, se define la distribución derivada $\alpha$-ésima
+de $f$ mediante $D^{\alpha}f=D^{\alpha}\Lambda_{f}$, esto es,
+
+\begin{equation}
+\langle D^{\alpha}f, \phi \rangle = (-1)^{\vert \alpha \vert} \int_{\Omega} f D^{\alpha} \phi (x)dx \qquad (\phi\in \mathcal{D}(\Omega)).
+\end{equation}
+\end{definicion}
+
+\begin{observacion}
+Si la función $f$ tiene derivadas parciales hasta orden $k$ en $\Omega$, la derivada distribucional
+ $D^{\alpha}f$ coincide con la distribución asociada a la derivada parcial clásica de orden $\alpha$ de $f$, para cada multi-índice $\alpha$ 
+con $\vert \alpha \vert \leq k$. Si $f^{(k)}$ es continua, se llega a la igualdad como consecuencia del Teorema de Fubini 
+y de la fórmula de integración por partes.
+
+\end{observacion}
+
+
+\begin{proposicion}
+Para cada multi-índice $\alpha$ y $\beta$: 
+\begin{enumerate}
+\item $D^{\alpha}:\mathcal{D}(\Omega)\rightarrow \mathcal{D}(\Omega)$ es un operador lineal y  continuo. %que actúa de forma lineal sobre compactos $\mathcal{D}(K)\subset\mathcal{D}(\Omega)$.
+\item $D^{\alpha}D^{\beta}\Lambda = D^{\alpha+\beta}\Lambda=D^{\beta}D^{\alpha}\Lambda$, $\forall \Lambda\in\mathcal{D}'(\Omega)$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{proof}
+\begin{enumerate}
+\item[]
+\item Dada una distribución $\Lambda$, para cada 
+compacto $K$ existen $n\in\mathds{N}$ y $C>0$ tales que 
+\begin{equation}
+\vert \langle\Lambda,\phi\rangle \vert \leq C \parallel \phi\parallel_{n} \qquad (\phi\in \mathcal{D}(K)).
+\end{equation}
+
+Entonces, tenemos:
+\begin{equation}
+\vert \langle D^{\alpha} \Lambda,\phi\rangle \vert = \vert \langle \Lambda, D^{\alpha}\phi\rangle \vert \leq C \parallel \phi\parallel_{n+\vert\alpha\vert} \qquad (\phi\in \mathcal{D}(K))
+\end{equation}
+
+y, por tanto, $D^{\alpha}\Lambda$ es un funcional continuo sobre todo $\mathcal{D}(K)$ y como consecuencia sobre $\mathcal{D}(\Omega)$.
+\item   
+\begin{align}
+            \langle D^{\alpha}D^{\beta}\Lambda,\phi\rangle  
+            & = \langle (-1)^{|\alpha|}  D^{\beta}\Lambda, D^{\alpha}\phi\rangle = \langle (-1)^{|\alpha|+|\beta|} \Lambda,D^{\beta}D^{\alpha}\phi\rangle\\ 
+            & = \langle(-1)^{|\alpha|+|\beta|} \Lambda,D^{\alpha+\beta}\phi\rangle = \langle D^{\alpha + \beta}\Lambda ,\phi\rangle.
+\end{align}
+\end{enumerate}
+\end{proof}
+
+\begin{teorema}
+Sean $\Lambda\in \mathcal{D}'(\Omega)$ y $K$ un compacto de $\Omega$. Entonces, existen una función continua $f$ definida en $\Omega$ y un multi-índice $\alpha$ tales que 
+
+\begin{equation}
+\langle \Lambda , \phi\rangle = (-1)^{\vert\alpha\vert} \int_{\Omega}f(x)(D^{\alpha}\phi )(x)dx
+\end{equation}
+para cada $\phi\in \mathcal{D}(K)$.
+\end{teorema}
+
+\begin{definicion}
+Dada una distribución $\Lambda\in\mathcal{D}'(\Omega)$ definimos su restricción a $U$ como la distribución  $\Lambda|_{U}\in\mathcal{D}'(U)$ definida por 
+\begin{equation}
+\langle\Lambda |_{U},\phi\rangle = \langle \Lambda, \phi\rangle \qquad (\phi \in \mathcal{D}(U)).
+\end{equation}
+Diremos que $\Lambda$ es cero en $U$ si $\Lambda |_{U} = 0$.
+\end{definicion}
+
+\begin{definicion}
+Sea $\Lambda\in\mathcal{D}'(\Omega)$ y sea $U$ el mayor subconjunto abierto de $\Omega$ donde $\Lambda$ es cero, entonces llamaremos soporte de $\Lambda$ y denotaremos por  $\mathrm{supp}({\Lambda})$ al conjunto $\Omega\setminus U$.
+
+\end{definicion}
+
+\begin{teorema}\label{thm:d02}
+Sea $\Lambda\in \mathcal{D}'(\Omega)$ de orden $N$ y $p\in\Omega$ tal que $\mathrm{supp}({\Lambda}) = \{p\} $. Entonces, existen constantes $c_{\alpha}$ tales que 
+\begin{equation}
+\Lambda = \sum_{\vert\alpha\vert \leq N} c_{\alpha} D^{\alpha}\delta_{p}.
+\end{equation}
+\end{teorema}
+\subsection{Convolución}
+\begin{definicion}
+Sean $u:\mathds{R}^{d}\rightarrow \mathds{K}$, $x\in\mathds{R}^{d}$. Se definen las funciones $\tau_{x} u , \check{u}:\mathds{R}^{d}\rightarrow \mathds{K} $ por
+\begin{align}
+[\tau_{x} u ](y) & = u (y-x)\\
+ \check{u}(y) & = u(-y) 
+\end{align}
+para cada $y\in\mathds{R}^{d}$.
+\end{definicion}
+
+\begin{definicion}
+Sean $u,v,:\mathds{R}^{d}\rightarrow \mathds{K}$. Definimos su convolución como la función $u*v: \mathds{R}^{d}\rightarrow \mathds{K}$ dada por 
+\begin{align*}
+(u*v)(x) &
+= \int_{\mathds{R}^{d}} u(y)v(x-y)dy 
+= \int_{\mathds{R}^{d}} u(y) [\tau_{x}\check{v}](y) dy  \\
+& = \langle  \Lambda_{u},\tau_{x}\check{v} \rangle 
+\end{align*}
+para todo $x\in\mathds{R}^{d}$, suponiendo que dicha integral exista. Por tanto, para $\Lambda\in \mathcal{D}'(\mathds{R}^{d})$ y $\phi\in \mathcal{D}(\mathds{R}^{d})$ podemos definir la convolución de $\Lambda$ y $\phi$ como la distribución dada por
+\begin{equation}
+[\Lambda * \phi] (x)  = \langle \Lambda, \tau_{x}\check{\phi} \rangle
+\end{equation}
+para cada $x\in\mathds{R}^{d}$.
+\end{definicion}
+
+\section{Transformada de Fourier. Distribuciones Temperadas}
+
+\subsection{Motivación}
+
+\begin{definicion}
+Dada $f\in L_{1}(\mathds{R}^{d})$,  se define su transformada de Fourier como la función $\mathcal{F}:\mathds{R}^{d}\rightarrow\mathds{K}$ dada por 
+\begin{equation} 
+[\mathcal{F}(f)](\xi) = (2\pi )^{-\frac{d}{2}}\int_{\mathds{R}^{d}}e^{-ix\cdot\xi}f(x)dx, \qquad(\xi\in\mathds{R}^{d})
+\end{equation}
+donde $x\cdot\xi = x_{1}\xi_{1}+\cdots+x_{d}\xi_{d}$. Con esta definición, también es natural ver la transofrmada de Fourier como un operador que lleva cada función $f\in L_{1}(\mathds{R}^{d})$ en la función $\mathcal{F}(f)$.  
+
+Sabemos, por el lema de Riemann-Lebesgue, que $\mathcal{F}(f)$ pertenece a $ C_{0}(\mathds{R}^{d})$ y es, por tanto, localmente integrable. Así, $\mathcal{F}(f)$ se identifica con una distribución $\Lambda_{\mathcal{F}(f)}$ dada por :
+\begin{align*}
+\langle \Lambda_{\mathcal{F}(f)},\phi \rangle & = \int_{\mathds{R}^{d}} 
+[\mathcal{F}(f)](\xi)\phi (\xi) d\xi \\
+ & = \int_{\mathds{R}^{d}} \int_{\mathds{R}^{d}}e^{-ix\cdot\xi} f(x)\phi(\xi)dxd\xi \\
+& = \int_{\mathds{R}^{d}} [\mathcal{F}(\phi)](x)f(x) dx=  \langle \Lambda_f,  \mathcal{F}(\phi)\rangle
+\end{align*}
+para cada $\phi\in
+  \mathcal{D}
+  (\mathds{R}^{d})$.
+\end{definicion}
+
+Esto nos puede llevar a querer generalizar la Transformada de Fourier de una distribución $\Lambda$ de la siguiente manera: 
+
+$$ \langle \mathcal{F}(\Lambda),\phi\rangle = \langle\Lambda,\mathcal{F}(\phi)\rangle\qquad (\phi\in\mathcal{D}(\mathbb{R}^{d})).$$
+
+Sin embargo, hay dos cuestiones que impiden dicha generalización. Por un lado, no es posible asegurar que $\mathcal{F}(\phi)\in\mathcal{D}(\mathds{R}^{d})$ siempre que $\phi\in\mathcal{D}(\mathds{R}^{d})$. Esto es, $\mathcal{D}(\mathds{R}^{d})$ es demasiado pequeño como espacio de funciones test para extender la transformada de Fourier.
+
+Por otro lado, $C^{\infty}(\mathds{R}^{d})$ no está conteniedo en $L_{1}(\mathds{R}^{d})$, por lo que la transformada de Fourier de una función de  $C^{\infty}(\mathds{R}^{d})$ puede no existir. Esto es,  $C^{\infty}(\mathds{R}^{d})$ es demasiado grande como espacio de funciones test.
+
+\subsection{Notación}
+\begin{definicion}
+Definimos la medida normalizada de Lebesgue en $\mathds{R}^{d}$ como
+\begin{equation}
+dm_{d}(x) = (2\pi)^{-\frac{d}{2}}dx.
+\end{equation}
+\end{definicion}
+\begin{definicion}
+Para cada $t\in\mathds{R}^{d}$, $e_{t}$ denotará:
+\begin{equation}
+e_{t}(x) = e^{it\cdot x} \quad (x\in\mathds{R}^{d}).
+\end{equation}
+Es claro que para cada $t\in\mathds{R}^{d}$,  $e_{t}$ satisface la propiedad $e_{t}(x+y) = e_{t}(x)e_{t}(y)$. Además, podemos reescribir la definición de transformada de Fourier en términos de $e_{t}$:
+\begin{align*}
+\mathcal{F}(f)(t) = (f*e_{t})(0) = \int_{\mathds{R}^{d}} f e_{-t} dm_{d}  \qquad (t\in\mathds{R}^{d}).
+\end{align*}
+\end{definicion}
+\begin{definicion}
+Sea $\alpha$ un multi-índice. De aquí en adelante vamos a llamar $D_{\alpha}$ al operador 
+
+\begin{equation}
+D_{\alpha} = i^{-\vert\alpha\vert}D^{\alpha} = \left( \frac{1}{i}\frac{\partial}{\partial x_{1}}\right)^{\alpha_{1}} \cdots \left( \frac{1}{i}\frac{\partial}{\partial x_{d}} \right)^{\alpha_{d}}.
+\end{equation}
+
+Sea $P$ un polinomio de $d$ variables y coeficientes complejos $c_{\alpha}$. Definimos los operadores diferenciales 
+\begin{equation}
+P(D)=\sum_{\alpha} c_{\alpha}D_{\alpha} \quad \text{y} \quad  P(-D)= \sum_{\alpha} (-1)^{\vert\alpha\vert}c_{\alpha}D_{\alpha}.
+\end{equation}
+\end{definicion}
+
+\subsection{Funciones de decrecimiento rápido}
+
+\begin{definicion}[Funciones de decrecimiento rápido]
+Sea $\varphi\in C^{\infty}(\mathds{R}^{d})$ cumpliendo que 
+\begin{equation}
+\sup_{\vert \alpha \vert \leq N}\sup_{x\in\mathds{R}^{d}}\left\{ (1 + \vert x \vert^{2})^{N} \vert (D^{\alpha}\varphi)(x) \vert\right\} < \infty \qquad(\forall N\in\mathds{N}).
+\end{equation}
+Esto es, $PD^{\alpha} \varphi$ es una función acotada en $\mathds{R}^{d}$, para todo polinomio $P$. 
+Entonces, decimos que $\varphi$ es una función de decrecimiento rápido en infinito. Estas funciones forman un espacio vectorial, denotado por $\mathcal{S}(\mathds{R}^{d})$, al que llamaremos la clase de Schwartz en $\mathds{R}^{d}$. En $\mathcal{S}(\mathds{R}^{d})$ consideraremos la topología localmente convexa y metrizable asociada a la familia de seminormas
+\begin{equation}
+s_{k,N}(\varphi) = \sup_{\vert \alpha \vert \leq N}\sup_{x\in\mathds{R}^{d}} \left\{ (1 + \vert x \vert^{2})^{N} \vert (D^{\alpha}\varphi)(x) \vert \right\} < \infty \qquad (\varphi\in \mathcal{S}(\mathds{R}^{d})\quad  k,N\in\mathds{N}).
+\end{equation}
+\end{definicion}
+\begin{observacion}
+$\mathcal{D}(\mathds{R}^{d})\subset \mathcal{S}(\mathds{R}^{d}) \subset L_{1}(\mathds{R}^{d})$ y $\mathcal{S}(\mathds{R}^{d})$ es denso en $L_{1}(\mathds{R}^{d})$ (pues lo es $\mathcal{D}(\mathds{R}^{d})$). 
+\end{observacion}
+\begin{proposicion}
+
+$\mathcal{D}(\mathds{R}^{d})$ es denso en $\mathcal{S}(\mathds{R}^{d})$ y la inclusión $I:\mathcal{D}(\mathds{R}^{d})\rightarrow\mathcal{S}(\mathds{R}^{d})$ es continua.
+\end{proposicion}
+
+\begin{teorema}\label{thm:d03}
+
+\begin{enumerate}
+\item[]
+\item $\mathcal{S}(\mathds{R}^{d})$ es un espacio de Fréchet.
+\item Sean $P$ un polinomio, $\varphi,\uppsi\in  \mathcal{S}(\mathds{R}^{d})$ y $\alpha$ un multi-índice. Entonces las aplicaciones 
+\begin{equation}
+\varphi \rightarrow P\varphi, \quad \varphi \rightarrow \uppsi\varphi, \quad \varphi \rightarrow D^{\alpha}\varphi \qquad (\varphi \in \mathcal{S}(\mathds{R}^{d}))
+\end{equation}
+son aplicaciones continuas de $\mathcal{S}(\mathds{R}^{d})$ en $\mathcal{S}(\mathds{R}^{d})$.
+\item  Sea $\varphi\in\mathcal{S}(\mathds{R}^{d})$ y sea $\alpha$ un multi-índice. Entonces, $\mathcal{F}(D^{\alpha}\varphi) = i^{\vert\alpha\vert } \xi^{\alpha}\mathcal{F}(\varphi)$ y $\mathcal{F}(x^{\alpha}\varphi) =  i^{\vert\alpha\vert }D^{\alpha}\mathcal{F}(\varphi)$.
+\item Sean $\varphi\in\mathcal{S}(\mathds{R}^{d})$ y $P$ un polinomio. Entonces $\mathcal{F}(P(D)\varphi) = P \mathcal{F}(\varphi)$ y $\mathcal{F}(P\varphi) = P(-D) \mathcal{F}(\varphi)$.
+\item La transformada de Fourier es un operador lineal y continuo de $\mathcal{S}(\mathds{R}^{d})$ en sí mismo.  
+\end{enumerate}
+\end{teorema}
+
+\begin{proof}
+\begin{enumerate}
+\item[]
+\item Sea $\{\varphi_{i}\}$ una sucesión de Cauchy en $\mathcal{S}(\mathds{R}^{d})$. Por serlas funciones $\varphi_{i}$ de decrecimiento rápido para todo $i\in\mathds{N}$, para cada par de multi-índices $\alpha$ y $\beta$, $\{x^{\beta}D^{\alpha}\varphi_{i} (x)\}\rightarrow g_{\alpha\beta}(x)$ uniformemente, donde $g_{\alpha\beta}=x^{\beta}D^{\alpha}g$ es una función acotada.  Por tanto, $\{\varphi_{i}\} \rightarrow g\in\mathcal{S}(\mathds{R}^{d})$, lo que demuestra que $\mathcal{S}(\mathds{R}^{d})$ es completo.
+\item Si $\varphi\in \mathcal{S}(\mathds{R}^{d})$ sabemos que $D^{\alpha} \varphi \in \mathcal{S}(\mathds{R}^{d}) $. En el caso de $\varphi\uppsi$, sabemos que $D^{\alpha}(\varphi\uppsi) = (D^{\alpha}\varphi)\uppsi + \varphi D^{\alpha}\uppsi \in\mathcal{S}(\mathds{R}^{d})$. Análogamente, $D^{\alpha}(P\varphi) = (D^{\alpha}P)\varphi + PD^{\alpha}\varphi$, siendo ambos sumandos de crecimiento lento por serlo $\varphi$. Hemos demostrado que las aplicaciones anteriores están bien definidas. Para demostrar su continuidad, basta con utilizar el \hyperref[thm:h06]{Teorema de la gráfica cerrada}.
+\item Fijemos un multiíndice $\alpha_{k} = (0,\ldots,0,\overset{(k)}{1},0,\ldots,0)$ y una función $\varphi\in \mathcal{S}(\mathds{R}^{d})$. Entonces, tenemos que 
+\begin{equation}
+\left[\mathcal{F}(D^{\alpha_{k}}\varphi)\right](\xi) 
+=  \int_{\mathds{R}^{d}} e^{-ix\cdot\xi} D^{\alpha_{k}} \varphi(x)dm_{d}(x).
+\end{equation}
+
+Integrando por partes, esto equivale a 
+
+\begin{equation}
+i\xi_{k} \int_{\mathds{R}^{d}} e^{-ix\cdot\xi} \varphi(x)dm_{d}(x) =  i\xi_{k} [\mathcal{F}(\varphi)](\xi).
+\end{equation}
+
+Por otro lado, 
+
+\begin{align*}
+D^{\alpha_{k}}\mathcal{F}(\varphi)(\xi) = & D^{\alpha_{k}} \left[ \int_{\mathds{R}^{d}} e^{-ix\cdot\xi} \varphi(x)dm_{d}(x)\right] \\
+= & \int_{\mathds{R}^{d}} D^{\alpha_{k}} e^{-ix\cdot\xi} \varphi(x)dm_d(x) \\
+= & (-i) \int_{\mathds{R}^{d}} e^{-ix\cdot\xi}x^{\alpha_k}\varphi(x)dm_d(x) \\
+= & -i\mathcal{F}(x^{\alpha_k}\varphi).
+\end{align*}
+Como todo multi-íncide $\alpha$ puede expresarse como suma de multi-índices $\alpha_{k}$, hemos demostrado el enunciado. 
+\item Si $\varphi\in\mathcal{S}(\mathds{R}^{d})$, por 2. sabemos que $P(D)\varphi\in \mathcal{S}(\mathds{R}^{d})$ y, además, se cumple 
+\begin{align}
+[(P(D)\varphi)*e_{t}](y) & = \int_{\mathds{R}^{d}} (P(D)\varphi)(x)e_{t}(y-x)dm_{d} = \int_{\mathds{R}^{d}} (\sum c_{\alpha} (i)^{-|\alpha |}D^{\alpha}\varphi)(x)e^{it\cdot (y-x)}dm_{d}\\  &= \int_{\mathds{R}^{d}} \varphi(x)(\sum c_{\alpha} (i)^{-|\alpha |}D^{\alpha}e_{t})(y-x)dm_{d} = 
+\int_{\mathds{R}^{d}} \varphi(x)P(t)e_{t}(y-x)dm_{d} \\ & = P(t) [ \varphi*e_{t} ](y).
+\end{align} 
+
+Evaluando en el origen, concluimos que $\mathcal{F}(P(D)\varphi) = P \mathcal{F}(\varphi)$. Para demostrar la segunda igualdad, tomemos $t=(t_1,\ldots, t_d)$ y $t'=(t_1+\varepsilon,\ldots,t_d)$, con $\varepsilon\neq 0$. Entonces, fijando $\varphi\in \mathcal{S}(\mathds{R}^d)$, tenemos:
+
+\begin{equation}
+    \frac{\mathcal{F}(\varphi)(t)-\mathcal{F}(\varphi)(t')}{i\varepsilon} = \int_{\mathds{R}^d}x_1\varphi (x) \frac{e^{-ix_1\varepsilon}-1}{i x_1 \varepsilon}e^{-ix \cdot t}dm_d.
+\end{equation}
+
+Como $x_1 \varphi \in \mathcal{S}(\mathds{R}^d) \subset L_1(\mathds{R}^d)$, podemos aplicar el teorema de convergencia dominada, obteniendo así:
+
+\begin{equation}
+ \int_{\mathds{R}^d} x_1 \varphi (x) e^{-i x\cdot t }dm_d =     - \frac{1}{i} \frac{\partial}{\partial t_1} \mathcal{F}(\varphi).
+\end{equation}
+
+Con esto, hemos probado la igualdad para el caso en el que $P=x_1$. Iterando este proceso, se llega a la igualdad para cualquier polinomio $P$.
+
+\item Sean $\varphi\in\mathcal{S}(\mathds{R}^d)$, $\alpha$ un multi-índice y $g(x) = (-1)^{\vert\alpha\vert}x^{\alpha}\varphi(x)$. Entonces es claro que $g\in\mathcal{S}(\mathds{R}^{d})$. Además, por 4. sabemos que $\mathcal{F}(g) = D_{\alpha}\mathcal{F}(\varphi)$ y que $PD_{\alpha} \mathcal{F} (\varphi) = P\mathcal{F} (g) = \mathcal{F} (P(D)g)$. Como la transformada de Fourier está definida en $L^1(\mathds{R}^d)$, $(P(D)g)$ vive en este espacio y su transformada de Fourier es, por tanto, una función acotada.  Como $PD_{\alpha}\mathcal{F}(\varphi)$ está acotada para cualesquiera $\alpha$ y $P$, concluimos que $\mathcal{F}(\varphi)\in\mathcal{S}(\mathds{R}^{d})$. Esto es, la transormada de Fourier está bien definida en $\mathcal{S}(\mathds{R}^{d})$. Para probar su continuidad, bastará con aplicar el \hyperref[thm:h06]{Teorema de la gráfica cerrada}. 
+\end{enumerate}
+\end{proof}
+
+\begin{teorema}[Teorema de inversión]\label{thm:d07}
+La transformada de Fourier es un isomorfismo de $\mathcal{S}(\mathds{R}^{d})$ en sí mismo. Si $\varphi\in \mathcal{S}(\mathds{R}^{d})$, entonces 
+\begin{gather}
+\varphi(x) = (2\pi)^{-d/2}\int_{\mathds{R}^{d}} e^{ix\cdot\xi}[\mathcal{F}(\varphi)](\xi)d\xi \qquad (x\in \mathds{R}^{d})
+\end{gather}
+
+esto es, $\mathcal{F}^{-1}\circ \mathcal{F} = Id_{\mathcal{S}(\mathds{R}^{d})}$. Además, este isomorfismo cumple que $\mathcal{F}^{4}(\varphi) = \varphi$.
+\end{teorema}
+
+\begin{teorema}
+    Sean $\varphi,\uppsi\in \mathcal{S}(\mathds{R}^{d})$. Entonces, se cumple:
+    \begin{enumerate}
+    \item $\varphi * \uppsi \in \mathcal{S}(\mathds{R}^{d})$.
+        \item $\mathcal{F}(\varphi * \uppsi) = \mathcal{F}(\varphi) \cdot \mathcal{F}(\uppsi)$.
+    \end{enumerate}
+
+\end{teorema}
+
+\subsection{Distribuciones Temperadas}
+\begin{definicion}
+Una distribución temperada o función generalizada de crecimiento lento es un funcional lineal y continuo en $\mathcal{S}(\mathds{R}^{d})$. Se denota por $\mathcal{S'}(\mathds{R}^{d})$ al espacio de las distribuciones temperadas, esto es, al dual de $\mathcal{S}(\mathds{R}^{d})$. La topología que consideramos en $\mathcal{S'}(\mathds{R}^{d})$                   es la débil-*, esto es, $\sigma(\mathcal{S'}(\mathds{R}^{d}),\mathcal{S}(\mathds{R}^{d}))$.
+\end{definicion}
+
+En el \autoref{thm:d03} veíamos cómo la transformada de Fourier está bien definida en el espacio $S(\mathds{R}^{d})$. Hemos encontrado, por tanto, el espacio de funciones test de tamaño adecuado que nos permite, siguiendo el espíritu natural de las distribuciones, definir la transformada de Fourier en $ \mathcal{S'}(\mathds{R}^{d})$. 
+
+\begin{definicion}
+Para cada $\Lambda\in \mathcal{S'}(\mathds{R}^{d})$ definimos su transformada de Fourier:
+\begin{equation}
+\langle \mathcal{F}(\Lambda), \varphi\rangle = \langle \Lambda, \mathcal{F}(\varphi) \rangle.
+\end{equation}
+\end{definicion}
+
+Como la transformada de Fourier es un isomorfismo de $\mathcal{S}(\mathds{R}^{d})$ en sí mismo, $\mathcal{F}(\Lambda)$ está bien definida y es una distribución temperada. 
+
+\begin{teorema}\label{thm:d01}
+Sean $\Lambda\in \mathcal{S}'(\mathds{R}^{d})$ y $P$ un polinomio. Entonces $\mathcal{F}(P(D)\Lambda )= P\mathcal{F}(\Lambda)$ y $\mathcal{F}(P\Lambda)= P (-D) \mathcal{F}(\Lambda)$. Para los operadores $P(D)$ y $P(-D)$ definidos en términos de $D_{\alpha}$.
+\end{teorema}
+\begin{proof}
+\begin{align}
+\langle \mathcal{F}(P(D)\Lambda), \varphi \rangle & = \langle P(D)\Lambda, \mathcal{F}(\varphi)\rangle = \langle \Lambda, P(-D)\mathcal{F}(\varphi) \rangle \\
+ & = \langle \Lambda, \mathcal{F}(P\varphi) \rangle = \langle \mathcal{F}(\Lambda), P\varphi \rangle \\ & = \langle P\mathcal{F}(\Lambda),\varphi \rangle.
+\end{align}
+
+\begin{align}
+\langle \mathcal{F}(P\Lambda), \varphi \rangle & = \langle P\Lambda, \mathcal{F}(\varphi)\rangle = \langle \Lambda, P \mathcal{F}(\varphi)\rangle \\
+ & = \langle \Lambda, \mathcal{F}(P(D)\varphi) \rangle = \langle \mathcal{F}(\Lambda), P(D)\varphi \rangle \\ & = \langle P(-D)\mathcal{F}(\Lambda),\varphi \rangle.
+\end{align}
+
+
+\end{proof}
+\begin{lema}\label{lm:d02}
+Si una distribución tiene como transformada de Fourier una combinación lineal de deltas de Dirac y sus derivadas, esa distribución vista como función es un polinomio. 
+\end{lema}
+\begin{proof}[Demostración]
+Sea $\Lambda$ una distribución tal que $\mathcal{F}(\Lambda)=\sum_{k=0}^{N}c_{k}D^{k}\delta$. 
+Ya sabemos que los polinomios son distribuciones temperadas. Podemos por tanto calcular sus transformadas de Fourier.  
+\begin{itemize}
+\item Supongamos que $N=0$. Entonces $
+\mathcal{F}(\Lambda)=c_{0}\delta$. Utilizando el \hyperref[thm:d07]{Teorema de Inversión}, deducimos que 
+\begin{align*}
+\langle \mathcal{F}(\Lambda), \varphi \rangle & =  \int_{\mathds{R}^{d}} c_{0}\delta(\varphi)
+= c_{0}\varphi (0) =  \int_{\mathds{R}^{d}}c_{0}(2\pi)^{-\frac{d}{2}} e^{i0\cdot \xi}[\mathcal{F}(\varphi)](\xi) d\xi 
+\\ & =  \int_{\mathds{R}^{d}}P_{0}(2\pi)^{-\frac{d}{2}} e^{i0\cdot \xi}[\mathcal{F}(\varphi)](\xi) d\xi = 
+\langle \Lambda_{P_{0}}, \mathcal{F}(\varphi) \rangle 
+\end{align*}
+para cualquier función $\varphi\in S(\mathds{R}^{d})$.  $P_{0}(x)=c_{0}$ es, por tanto, el polinomio  que buscamos. En particular, tenemos que $\mathcal{F}(\Lambda_{1}) = \delta$. Análogamente, es fácil comprobar que
+\begin{equation}
+\langle \mathcal{F}(\delta),\varphi\rangle = \langle \delta,\mathcal{F}(\varphi)\rangle = \mathcal{F}(\varphi)(0) = \int_{\mathds{R}^{d}}\varphi dm_{d} = \langle \Lambda_{1},\varphi \rangle.
+\end{equation}
+\item Supongamos ahora $N\geq 1$. Por \autoref{thm:d01}
+ sabemos que 
+\begin{gather}
+\mathcal{F}(P(D)\delta) = P\mathcal{F}(\delta) = P.
+\end{gather}
+\end{itemize}
+\end{proof}
