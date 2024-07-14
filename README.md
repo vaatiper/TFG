@@ -1,5 +1,6 @@
-# Trabajo Fin de Grado
+# Trabajo Fin de Grado: Aproximación de operadores de Lipschitz continuos entre espacios de Banach
 
+## Descripción
 Este repositorio contiene mi Trabajo Fin de Grado para la titulación de Doble Grado en Ingeniería Informática y Matemáticas de la Universidad de Granada. 
 
 En el trabajo se presentan los conceptos más relevantes de la Teoría de Distribuciones con el objetivo de desarrollar los resultados presentados por Chen y Chen en el artículo [Universal approximation to nonlinear operators by neural networks with arbitrary activation functions and its application to dynamical systems](https://ieeexplore.ieee.org/document/392253). Los avances más relevantes que se proponen son: 
@@ -13,7 +14,11 @@ Posteriormente se realiza un estudio del estado del arte para la aproximación d
 
 El trabajo compilado puede consultarse [aquí](tfg.pdf).
 
-# Estructura del repositorio 
+Un saludo,
+
+Violeta Atienza Pereira. 
+
+## Estructura del repositorio 
 
 Las fuentes se organizan en dos carpetas:
 - En el directorio `Memoria` se encuentran las fuentes en latex de la memoria del trabajo. 
@@ -21,3 +26,7 @@ Las fuentes se organizan en dos carpetas:
   - El cuaderno `experimento-1` implementa varios modelos de regresión en SciANN con el objetivo de estudiar cómo escala la librería. 
   - En el cuaderno `experimento-2` se trabaja en un aproximador de la función que describe el problema de Burgers.  
   - En los cuadernos `experimento-3-a` y `experimento-3-b` se proponen dos implementaciones de modelos para la aproximación de operadores en [SciANN](https://github.com/sciann/sciann) y se realiza un estudio comparativo con la implementación propuesta en [DeepONet](https://github.com/lululxvi/deeponet).
+
+## Pre-requisitos
+
+Para replicar este proyecto, es importante tener en cuenta [SciANN](https://github.com/sciann/sciann) ya no está siendo mantenido y que los útlimos tests de la librería SciANN se hicieron con las versiones `python==3.9` y `tensorflow==2.10`. Se recomienda no utilizar versiones más recientes, especialmente debido a la alta variabilidad que hay entre versiones en Keras/Tensorflow. 
