@@ -53,11 +53,11 @@ Una vez entendido el propósito general de la librería, procedemos a ver más d
 
 En el diagrama de la \autoref{fig:img03}, se muestra el flujo de creación de una PINN a través de cinco bloques. Los primeros tres bloques muestran cómo se mantiene una estructura secuencial entre la capa de variables de entrada, las capas de la función y la capa de salida. Entre las salidas podremos definir restricciones, relaciones y operaciones matemáticas, tal y como se muestra en el cuarto bloque. Son únicamente estas restricciones junto con los datos de entrada lo que debemos especificar para construir el modelo ---último bloque del procedimiento---, ya que los primeros tres bloques del diagrama quedan ``ligados'' a partir de las restricciones definidas en el cuarto bloque. 
 
-Uno de los puntos clave de \textit{SciANN} es que al añadir capas de operaciones matemáticas a las salidas, estamos haciendo que estas operaciones sean la última capa de la red, esto es, las nuevas salidas. Así, la función de pérdida tomará esas operaciones en vez de las salidasde un elemento \textit{Functional}. 
+Uno de los puntos clave de \textit{SciANN} es que al añadir capas de operaciones matemáticas a las salidas, estamos haciendo que estas operaciones sean la última capa de la red, esto es, las nuevas salidas. Así, la función de pérdida tomará esas operaciones en vez de las salidas de un elemento \textit{Functional}. 
 
 \subsection{Espacio de datos}
 
-Como mencionabamos en el apartado anterior, las entradas de una PINN en \textit{SciANN} definen las entradas de una función a aprender y se modelan mediante la clase \textit{Variable}. En esta sección, vamos a entender qué tipo de entradas requiere una PINN. 
+Como mencionábamos en el apartado anterior, las entradas de una PINN en \textit{SciANN} definen las entradas de una función a aprender y se modelan mediante la clase \textit{Variable}. En esta sección, vamos a entender qué tipo de entradas requiere una PINN. 
 
 A la hora de simular un fenómeno físico, debemos identificar los elementos que lo componen para estudiar cuál es el espacio que permite definir el fenómeno en su totalidad. Por ejemplo, los elementos a tener en cuenta cuando simulamos el calor transferido al ambiente en un disipador no serán los mismos que cuando queremos simular la distribución de cargas en una viga. 
 
@@ -68,17 +68,17 @@ De forma general, definimos el espacio de entrada de una PINN, denotado por $ S=
     \begin{subfigure}{0.5\textwidth}
     \centering
     \includegraphics[width=0.7\linewidth]{img/img33.png} 
-    \caption{Mallado uniforme centrado en $(0,0)$}
+    \caption{Mallado uniforme centrado en $(0,0)$.}
     \label{fig:img33}
     \end{subfigure}   
     \begin{subfigure}{0.5\textwidth}
     \centering
     \includegraphics[width=0.7\linewidth]{img/img34.png}
-    \caption{Mallado radial centrado en $(0,0)$}
+    \caption{Mallado radial centrado en $(0,0)$.}
     \label{fig:img34}
     \end{subfigure}
 
-\caption{Ejemplos de mallado para PINNs}
+\caption{Ejemplos de mallado para PINNs.}
 \label{fig:img3334}
 \end{figure}
 
@@ -99,7 +99,7 @@ donde $G$ y $F$ son funcionales de tipo diferencial que actúan sobre $u$. Como 
 Así, la función de pérdida asociada al problema de aprendizaje resulta:
 
 \begin{equation}
-    \mathcal{L}(\theta) = \sum (\sum_{S^*} \parallel u(x^*,t^*) - u_{\theta}(x^*,t^*)) \parallel + \sum_{S^*} \parallel H_i(u_{\theta}(x^*,t^*))\parallel.
+    \mathcal{L}(\theta) = \sum_{i=1}^N (\sum_{S^*} \parallel H_i(u_{\theta}(x^*,t^*))\parallel) + \sum_{S^*} \parallel u(x^*,t^*) - u_{\theta}(x^*,t^*) \parallel .
 \end{equation}
 Por tanto, obtenemos una función de pérdida adecuada segun los requerimientos de las PINNs mientras que aprovehcamos las ventajas del entrenamiento de redes neuronales en Keras, entre ellas la paralelización y el mini-batch.
 

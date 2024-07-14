@@ -18,7 +18,7 @@ Una distribución es un funcional lineal en $\mathcal{D}(\Omega)$ que es continu
 Sea $\Lambda$ un funcional lineal sobre $\mathcal{D}(\Omega)$. Equivalen: 
 \begin{enumerate}
 \item $\Lambda\in \mathcal{D}'(\Omega).$
-\item Para cada compacto $K\subset \Omega$, podemos contrar $N\in\mathds{N}$, $C<\infty$ tales que $\vert \Lambda\phi \vert \leq C \parallel \phi \parallel_{N}$, $\forall \phi \in \mathcal{D}_{K}$.
+\item Para cada compacto $K\subset \Omega$, podemos encontrar $N\in\mathds{N}$, $C<\infty$ tales que $\vert \langle\Lambda , \phi \rangle\vert \leq C \parallel \phi \parallel_{N}$, $\forall \phi \in \mathcal{D}_{K}$.
 \end{enumerate}
 \end{teorema}
 \begin{observacion}
@@ -143,7 +143,7 @@ Diremos que $\Lambda$ es cero en $U$ si $\Lambda |_{U} = 0$.
 \end{definicion}
 
 \begin{definicion}
-Sea $\Lambda\in\mathcal{D}'(\Omega)$ y sea $U$ el mayor subconjunto abierto de $\Omega$ donde $\Lambda$ es cero, entonces llamaremos soporte de $\Lambda$ y denotaremos por  $\mathrm{supp}({\Lambda})$ al conjunto $\Omega\setminus U$.
+Sea $\Lambda\in\mathcal{D}'(\Omega)$ y sea $U$ el mayor subconjunto abierto de $\Omega$ donde $\Lambda$ es cero. Entonces, llamaremos soporte de $\Lambda$ y denotaremos por  $\mathrm{supp}({\Lambda})$ al conjunto $\Omega\setminus U$.
 
 \end{definicion}
 
@@ -314,7 +314,7 @@ Evaluando en el origen, concluimos que $\mathcal{F}(P(D)\varphi) = P \mathcal{F}
     \frac{\mathcal{F}(\varphi)(t)-\mathcal{F}(\varphi)(t')}{i\varepsilon} = \int_{\mathds{R}^d}x_1\varphi (x) \frac{e^{-ix_1\varepsilon}-1}{i x_1 \varepsilon}e^{-ix \cdot t}dm_d.
 \end{equation}
 
-Como $x_1 \varphi \in \mathcal{S}(\mathds{R}^d) \subset L_1(\mathds{R}^d)$, podemos aplicar el teorema de convergencia dominada, obteniendo así:
+Como $x_1 \varphi \in \mathcal{S}(\mathds{R}^d) \subset L_1(\mathds{R}^d)$, podemos aplicar el \hyperref[thm:h08]{Teorema de convergencia dominada}, obteniendo así:
 
 \begin{equation}
  \int_{\mathds{R}^d} x_1 \varphi (x) e^{-i x\cdot t }dm_d =     - \frac{1}{i} \frac{\partial}{\partial t_1} \mathcal{F}(\varphi).
@@ -349,7 +349,7 @@ esto es, $\mathcal{F}^{-1}\circ \mathcal{F} = Id_{\mathcal{S}(\mathds{R}^{d})}$.
 Una distribución temperada o función generalizada de crecimiento lento es un funcional lineal y continuo en $\mathcal{S}(\mathds{R}^{d})$. Se denota por $\mathcal{S'}(\mathds{R}^{d})$ al espacio de las distribuciones temperadas, esto es, al dual de $\mathcal{S}(\mathds{R}^{d})$. La topología que consideramos en $\mathcal{S'}(\mathds{R}^{d})$                   es la débil-*, esto es, $\sigma(\mathcal{S'}(\mathds{R}^{d}),\mathcal{S}(\mathds{R}^{d}))$.
 \end{definicion}
 
-En el \autoref{thm:d03} veíamos cómo la transformada de Fourier está bien definida en el espacio $S(\mathds{R}^{d})$. Hemos encontrado, por tanto, el espacio de funciones test de tamaño adecuado que nos permite, siguiendo el espíritu natural de las distribuciones, definir la transformada de Fourier en $ \mathcal{S'}(\mathds{R}^{d})$. 
+En el \autoref{thm:d03} veíamos cómo la transformada de Fourier está bien definida en el espacio $S(\mathds{R}^{d})$. Hemos encontrado, por tanto, el espacio de ``funciones test'' de tamaño adecuado que nos permite, siguiendo el espíritu natural de las distribuciones, definir la transformada de Fourier en $ \mathcal{S'}(\mathds{R}^{d})$. 
 
 \begin{definicion}
 Para cada $\Lambda\in \mathcal{S'}(\mathds{R}^{d})$ definimos su transformada de Fourier:
@@ -361,7 +361,7 @@ Para cada $\Lambda\in \mathcal{S'}(\mathds{R}^{d})$ definimos su transformada de
 Como la transformada de Fourier es un isomorfismo de $\mathcal{S}(\mathds{R}^{d})$ en sí mismo, $\mathcal{F}(\Lambda)$ está bien definida y es una distribución temperada. 
 
 \begin{teorema}\label{thm:d01}
-Sean $\Lambda\in \mathcal{S}'(\mathds{R}^{d})$ y $P$ un polinomio. Entonces $\mathcal{F}(P(D)\Lambda )= P\mathcal{F}(\Lambda)$ y $\mathcal{F}(P\Lambda)= P (-D) \mathcal{F}(\Lambda)$. Para los operadores $P(D)$ y $P(-D)$ definidos en términos de $D_{\alpha}$.
+Sean $\Lambda\in \mathcal{S}'(\mathds{R}^{d})$ y $P$ un polinomio. Entonces $\mathcal{F}(P(D)\Lambda )= P\mathcal{F}(\Lambda)$ y $\mathcal{F}(P\Lambda)= P (-D) \mathcal{F}(\Lambda)$ para los operadores $P(D)$ y $P(-D)$ definidos en términos de $D_{\alpha}$.
 \end{teorema}
 \begin{proof}
 \begin{align}
@@ -384,7 +384,7 @@ Sea $\Lambda$ una distribución tal que $\mathcal{F}(\Lambda)=\sum_{k=0}^{N}c_{k
 Ya sabemos que los polinomios son distribuciones temperadas. Podemos por tanto calcular sus transformadas de Fourier.  
 \begin{itemize}
 \item Supongamos que $N=0$. Entonces $
-\mathcal{F}(\Lambda)=c_{0}\delta$. Utilizando el \hyperref[thm:d07]{Teorema de Inversión}, deducimos que 
+\mathcal{F}(\Lambda)=c_{0}\delta$. Utilizando el \hyperref[thm:d07]{Teorema de inversión}, deducimos que 
 \begin{align*}
 \langle \mathcal{F}(\Lambda), \varphi \rangle & =  \int_{\mathds{R}^{d}} c_{0}\delta(\varphi)
 = c_{0}\varphi (0) =  \int_{\mathds{R}^{d}}c_{0}(2\pi)^{-\frac{d}{2}} e^{i0\cdot \xi}[\mathcal{F}(\varphi)](\xi) d\xi 

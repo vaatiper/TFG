@@ -70,13 +70,13 @@ Sea $X$ un EVT separado. Entonces equivalen:
 \begin{proof}
 \begin{itemize}
 \item[]
-\item 4. $\Rightarrow$ 1. Como $X$ tiene dimensión finita, como consecuencia del Teorema de Tihonov sabemos que su topología es equivalente a la topología inducida por la norma euclídea en la misma dimensión de $X$. Como la topología inducida por la norma euclídea es localmente compacta, la topología de $X$ también lo será. 
+\item 4. $\Rightarrow$ 1. Como $X$ tiene dimensión finita, como consecuencia del \hyperref[thm:d05]{Teorema de Tihonov} sabemos que su topología es equivalente a la topología inducida por la norma euclídea en la misma dimensión de $X$. Como la topología inducida por la norma euclídea es localmente compacta, la topología de $X$ también lo será. 
 \item 1. $\Rightarrow$ 2. $\Rightarrow$ 3. Son evidentes.
 \item 3. $\Rightarrow$ 4. Sea $U$ un entorno de cero precompacto en $X$. Entonces, por definición, existirá un subconjunto finito $F$ de $X$ tal que, fijando $\lambda=\frac{1}{2}$, $U\subset F + \lambda U$. Si $M$ es el subespacio de $X$ generado por $F$, $M$ tiene dimensión finita y, por tanto, es cerrado en $X$. Como $U$ está contenido en $M+\lambda U$ y es precompacto (por tanto, acotado), el \hyperref[lm:d01]{Lema de Riesz} nos dice que $U\subset M$. Como sabemos además que $U$ es absorbente podemos deducir que $X=M$, por lo que $X$ tiene dimensión finita. 
 \end{itemize}
 \end{proof}
 
-Como hemos visto, el \hyperref[thm:d05]{Teorema de Tihonov} $(1935)$ extiende al Teorema de Hausdorff $(1932)$ para espacios normados de dimensión finita. Análogamente, el \hyperref[lm:d01]{Lema de Riesz} y el \hyperref[thm:d04]{Teorema de Riesz} son extensiones de los conocidos resultados para estos espacios. Como consecuencia de este último teorema, podemos deducir que todo subconjunto precompacto de un EVT de dimensión infinita tiene interior vacío. Esto tiene un gran impacto cuando trabajamos en espacios de funciones, por lo que volveremos a ello más adelante. 
+Como hemos visto, el \hyperref[thm:d05]{Teorema de Tihonov} $(1935)$ extiende al \hyperref[thm:h01]{Teorema de Hausdorff} $(1932)$ para espacios normados de dimensión finita. Análogamente, el \hyperref[lm:d01]{Lema de Riesz} y el \hyperref[thm:d04]{Teorema de Riesz} son extensiones de los conocidos resultados para estos espacios. Como consecuencia de este último teorema, podemos deducir que todo subconjunto precompacto de un EVT de dimensión infinita tiene interior vacío. Esto tiene un gran impacto cuando trabajamos en espacios de funciones, por lo que volveremos a ello más adelante. 
 
 \section{Convergencia uniforme y complitud}
 Las topologías vectoriales no son metrizables en general. Por tanto, las sucesiones pueden no ser suficientes para caracterizar la topología. Sin embargo, generalizando el concepto de sucesión, es posible manejar algunos aspectos de topologías generales como si fuesen metrizables. 
@@ -353,7 +353,7 @@ Sea $\mu$ el funcional de Minkowski en $U$. Entonces, $\mu$ es sublineal en $X$ 
 \begin{equation}
 \{x\in X : \mu (x) < 1\} \subset U \subset \{x\in X : \mu (x) \leq 1\}
 \end{equation}
-por lo que $\mu (x_{0}) \geq 1$ y $\lambda \mu (x_{0}) \leq \mu(\lambda x_{0})$ se cumple para todo  $\lambda > 0$ por la homogeneidad de $\mu$. Por tanto, tomando el subespacio $\mathds{R}\{x_{0}\}$ de $X$ y el funcional lineal que a cada $\lambda\in\mathds{R}$ le asigna  $g(\lambda)=\lambda\mu(x_{0})$, definido en $\mathds{R}\{x_{0}\}$, el Teorema de Hahn-Banach nos proporciona un funcional $f\in X^{\hash}$ que cumple
+por lo que $\mu (x_{0}) \geq 1$ y $\lambda \mu (x_{0}) \leq \mu(\lambda x_{0})$ se cumple para todo  $\lambda > 0$ por la homogeneidad de $\mu$. Por tanto, tomando el subespacio $\mathds{R}\{x_{0}\}$ de $X$ y el funcional lineal que a cada $\lambda\in\mathds{R}$ le asigna  $g(\lambda)=\lambda\mu(x_{0})$, definido en $\mathds{R}\{x_{0}\}$, el \hyperref[thm:h03]{Teorema de Hahn-Banach} nos proporciona un funcional $f\in X^{\hash}$ que cumple
 \begin{equation}
 f(x) \leq \mu (x) \quad (x\in X) \qquad y \qquad f(x_{0}) = \mu (x_{0}).
 \end{equation}
@@ -447,7 +447,9 @@ Se trata de la topología en $X^{*}$ de la convergencia puntual sobre los elemen
 \begin{observacion}
 Sea $X$ ELC. En general, es posible que no tengamos en $X^{*}$ ninguna topología destacable. En ese caso, sabemos que al menos dispondremos de la topología débil-*.
 \end{observacion}
-\section{Espacio de funciones Test}
+\section{Espacio de funciones test}
+
+En esta sección haremos una presentación del espacio de funciones test. Por un lado, esta presentación nos permitirá particularizar y afianzar los conceptos que se han expuesto para EVTs. Por otro lado, como veremos más adelante, la presentación de estos espacios es esencial dentro del estudio de la Teoría de Distribuciones.
 \begin{definicion}
 Sea $\Omega$ un conjunto abierto no vacío de $\mathds{R}^{d}$. Llamamos multi-índice a la d-tupla  $\alpha = (\alpha_{1},\ldots,\alpha_{d})$ de enteros no negativos. A cada multi-índice $\alpha$, podemos asociar un operador diferencial
 \begin{equation}

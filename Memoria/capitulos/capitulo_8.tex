@@ -37,15 +37,15 @@ Hemos utilizado la librería Numpy de Python para generar una partición del int
 \subsubsection{Construcción del modelo}
 
 \begin{lstlisting}[language=Python,caption={Modelo en \textit{SciANN} para el ajuste de la función seno.},label={lst:exp1-sin}]
-# Definimos la estructura de la función que queremos aprender.
+#Definimos la estructura de la función que queremos aprender.
 x = Variable('x')
 y = Functional('y', x, [10, 10, 10], activation=['tanh', 'g-cos', 'l-sin'])
 
-# Imponemos restricciones al modelo. 
+#Imponemos restricciones al modelo. 
 dy_dx = sn.diff(y, x)
 c1 = Data(y)
 
-# Definimos el modelo.
+#Definimos el modelo.
 model = SciModel(x, [y, dy_dx], optimizer='adam')
 \end{lstlisting}
 
@@ -212,20 +212,20 @@ Como desconocemos la complejidad del modelo necesario para hacer un buen ajuste,
 
 
 \begin{lstlisting}[language=Python,caption={Ejemplo de modelo en \textit{SciANN} para el ajuste de la función exponencial.},label={lst:exp1-exp}]
-# Definimos la estructura de la función que queremos aprender.
+#Definimos la estructura de la función que queremos aprender.
 x = Variable('x')
 y = Functional('y', x, 5*[20], activation=5*['tanh'])
 
-# Imponemos restricciones al modelo.
+#Imponemos restricciones al modelo.
 dy_dx = sn.diff(y, x)
 c1 = Data(y)
 
-# Definimos el modelo.
+#Definimos el modelo.
 model = SciModel(x, [y, dy_dx], optimizer='adam')
 
 start_time = time.time()
 
-# Entrenamiento.
+#Entrenamiento.
 entrenamiento_exp = model.train(x_true,
             [y_true, dy_true],
             epochs=10000,
@@ -329,20 +329,20 @@ Para este problema se ha creado un mallado en Numpy con una granularidad de $100
 El modelo, que queda detallado en el \autoref{lst:exp1-bidim}, es similar a los descritos anteriormente. Como tenemos dos variables de entrada, ambas unidimensionales, hemos definido un total de dos objetos \textit{Variable} para el modelo. Además, al tratarse de un problema algo más complejo, hemos aumentado el número de capas densas. 
 
 \begin{lstlisting}[language=Python,caption={Modelo en \textit{SciANN} para ajuste bidimensional.},label={lst:exp1-bidim}]
-    # Definición de las entradas.
+    #Definición de las entradas.
     x = sn.Variable('x')
     y = sn.Variable('y')
     
-    # Definición de la función.
+    #Definición de la función.
     f = sn.Functional('f', [x, y], [10, 10, 10, 10], 'tanh')
     
-    # Imposición de restricciones.
+    #Imposición de restricciones.
     df_dx = sn.diff(f, x)
     df_dy = sn.diff(f, y)
     
     d1 = sn.Data(f)
 
-    # Definición del modelo.
+    #Definición del modelo.
     modelo_2d = sn.SciModel([x,y],[f, df_dx,df_dy])
 \end{lstlisting}
 
@@ -400,21 +400,21 @@ Siguiendo la estructura de entrada que \textit{SciANN} requiere, es necesario co
 Nuestro objetivo es, por tanto, construir un aproximador 
 $\hat{u}(t, x)$ de $u(t,x)$ definido en el dominio $[0,1]\times[-1,1]$.
 \begin{lstlisting}[language=Python,caption={Modelo en \textit{SciANN} para el problema de Burgers.},label={lst:exp2}]
-# Definición de entradas.
+#Definición de entradas.
 x = sn.Variable('x')
 t = sn.Variable('t')
 
-# Definicón de la función a aprender.
+#Definicón de la función a aprender.
 u = sn.Functional('u', [t,x], 8*[20], 'tanh')
 
-# Definición de las restricciones del modelo. 
+#Definición de las restricciones del modelo. 
 L1 = diff(u, t) + u*diff(u,x) - (0.01/pi)*diff(u, x, order=2)
 TOL = 0.001
 C1 = (1-sign(t - TOL)) * (u + sin(pi*x))
 C2 = (1-sign(x - (-1+TOL))) * (u)
 C3 = (1+sign(x - ( 1-TOL))) * (u)
 
-# Definición del modelo.
+#Definición del modelo.
 burgers_model = sn.SciModel([x, t], [L1, C1, C2, C3])
 \end{lstlisting}
 
@@ -510,7 +510,7 @@ Por último, en la \autoref{fig:img1029} podemos comparar la predicción obtenid
     \caption{$\vert u- \hat{u}\vert$.}
     \label{fig:img88}
     \end{subfigure}
-\caption{Comparación de $\hat{u}$ y $u$  en el problema de Burgers extraída de ~\cite{Haghighat2021}.}
+\caption{Comparación de $\hat{u}$ y $u$  en el problema de Burgers extraída de~\cite{Haghighat2021}.}
 \label{fig:img1029}
 \end{figure}
 
@@ -551,8 +551,7 @@ Este impedimento hace que la función de pérdida asociada a nuestro modelo no v
 
 \subsection{Obtención de datos}\label{sec:8.4.3}
 
-Nuestro objetivo es replicar el experimento realizado en~\cite{lu2024deeponet}, por lo que los datos han sido obtenidos directamente del proyecto, que se encuentra disponible en \hyperlink{https://github.
-com/lululxvi/deepxde}{https://github.com/lululxvi/deepxde}. Como acabamos de discutir en la \autoref{sec:8.3.2}, el objetivo es minimizar el error a partir de unos datos explícitos. Esto recuerda a la regresión realizada en la \autoref{sec:8.2} y nos da información sobre la estructura de datos explícitos para $G(u)(y)$ que necesitamos.
+Nuestro objetivo es replicar el experimento realizado en~\cite{lu2024deeponet}, por lo que los datos han sido obtenidos directamente del proyecto, que se encuentra disponible en \hyperlink{https://github.com/lululxvi/deeponet}{https://github.com/lululxvi/deeponet}. Como acabamos de discutir en la \autoref{sec:8.3.2}, el objetivo es minimizar el error a partir de unos datos explícitos. Esto recuerda a la regresión realizada en la \autoref{sec:8.2} y nos da información sobre la estructura de datos explícitos para $G(u)(y)$ que necesitamos.
 
 Como se vió en la figura \autoref{fig:img02}, vamos a contar con dos subredes independientes con sus respectivas entradas. Esta arquitectura facilita que cada una aprenda por su cuenta. En~\cite{lu2024deeponet} dan nombre a estas subredes, así que para facilitar la explicación de la estructura vamos a utilizar esa misma terminología. Teniendo en mente la \autoref{fig:img02}, vamos a llamar subred \texttt{branch} a la de la parte inferior del esquema, que toma evaluaciones de $u$ en $m$ sensores $u(x_{1}),\dots,u(x_{m})$, y subred \texttt{trunk} a la de la parte superior, que únicamente toma como entrada valores de $y$. En la \autoref{fig:img12} mostramos una representación simplificada de la arquitectura y sus entradas.
 
@@ -640,26 +639,26 @@ La estructura de clases de \textit{SciANN} actualmente soporta funciones, pero n
 
 
 \begin{lstlisting}[language=Python,caption={Primera aproximación para el modelo de aprendizaje de operadores.},label={lst:exp3-aprox1}]
-# Número de sensores.
+#Número de sensores.
 m = 100
 
-# Número de neuronas por capa.
+#Número de neuronas por capa.
 n_in_layer = 40
 
-# Definicion de entradas.
+#Definicion de entradas.
 x = sn.Variable("x")
 ux = [sn.Variable(f'ux{i}') for i in range(m)]
 
 
-# Definición de subredes.
+#Definición de subredes.
 subnet_branch = sn.Functional('branch_out', ux, [n_in_layer], activation='sigmoid')
 subnet_trunk = sn.Functional("trunk_out",x ,[n_in_layer], 'sigmoid')
 
-# Producto cartesiano de las salidas de ambas.
+#Producto cartesiano de las salidas de ambas.
 s  = sn.utils.dot(subnet_branch,subnet_trunk)
 d1 = sn.Data(s)
 
-# Definición del modelo.
+#Definición del modelo.
 modelo_operador = sn.SciModel(inputs = ux+[x], targets=[d1], loss_func='MSE',optimizer="adam")
 \end{lstlisting}
 
@@ -677,17 +676,17 @@ Sin embargo, mediante el resumen del modelo y el esquema extraído por Tensorflo
 Debido a las dificultades encontradas, optamos por implementar el producto escalar manualmente. Recordemos que, aunque estemos definiendo las subredes como objetos de la clase \textit{Functional}, esto no va a tener ninguna repercusión en la tarea de entrenamiento, pues no hemos definido ninguna restricción que añada términos extra a la función de pérdida. 
 
 \begin{lstlisting}[language=Python,caption={Segunda aproximación para el modelo de aprendizaje de operadores.},label={lst:exp3-aprox2}]]
-# Definición de las entradas.
+#Definición de las entradas.
 x = sn.Variable("x")
 ux = [sn.Variable(f'ux{i}') for i in range(m)]
 
 
-# Definición de subredes.
+#Definición de subredes.
 
 subnet_branches = [sn.Functional(f'branch_out_{i}', ux, [1], activation='tanh') for i in range(N)]
 subnet_trunk = sn.Functional("trunk_out",x ,[N], 'sigmoid')
 
-# Construcción manual del producto cartesiano de las subredes.
+#Construcción manual del producto cartesiano de las subredes.
 productos = []
 
 for i in range(N):
@@ -698,17 +697,17 @@ s = sn.utils.add(productos[0],productos[1])
 for i in range(2,N):
   s = sn.utils.add(s,productos[i])
 
-# Restricciones del modelo.
+#Restricciones del modelo.
 d1 = sn.Data(s)
 
-# Definición del modelo.
+#Definición del modelo.
 modelo_operador= sn.SciModel(inputs = ux+[x], targets=[d1], loss_func='MSE',optimizer="adam")
 \end{lstlisting}
 
 En la \autoref{fig:operador_b} se puede observar cómo en este caso el producto entre ambas subredes se ha implementado correctamente mediante capas \textit{Lambda} de Keras. 
  \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1.1\textwidth]{img/operador_b.png}
+    \includegraphics[width=\textwidth]{img/operador_b.png}
     \caption{Representación interna del experimento 3: segunda aproximación.}
     \label{fig:operador_b}
 \end{figure}

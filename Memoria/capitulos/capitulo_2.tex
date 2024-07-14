@@ -4,9 +4,9 @@ En este capítulo se recogen los resultados trabajados durante el grado que han 
 \begin{definicion}
 Dado un conjunto no vacío $\Omega$, una $\sigma$-álgebra en $\Omega$ es una familia $\mathcal{A}$ de partes de $\Omega$ que contenga a $\Omega$ y sea estable por complementación y por unión numerable, esto es, $\mathcal{A} \subseteq \mathcal{P}(\Omega)$ es una $\sigma$-álgebra en $\Omega$ si verifica las siguientes propiedades:
 \begin{enumerate}
-	\item $\Omega\in\mathcal{A}$
-	\item $E\in\mathcal{A} \rightarrow \Omega \backslash E \in \mathcal{A}$
-	\item Si $E_{n}\in\mathcal{A}$ para todo $n\in\mathds{N}$, entonces $\bigcup_{n\in\mathds{N}}E_{n}\in\mathcal{A}$
+	\item $\Omega\in\mathcal{A}$.
+	\item $E\in\mathcal{A} \Rightarrow \Omega \backslash E \in \mathcal{A}$.
+	\item Si $E_{n}\in\mathcal{A}$ para todo $n\in\mathds{N}$, entonces $\bigcup_{n\in\mathds{N}}E_{n}\in\mathcal{A}$.
 \end{enumerate}
 Un espacio medible es un par $(\Omega,\mathcal{A})$ donde $\Omega$ es un conjunto no vacío y $\mathcal{A}$ es una $\sigma$-álgebra en $\Omega$. Los elementos de $\mathcal{A}$ se suelen llamar conjuntos medibles.
 \end{definicion}
@@ -22,8 +22,8 @@ Sean $(\Omega_{1},\mathcal{A}_{1}), (\Omega_{2},\mathcal{A}_{2})$ espacios medib
 \begin{definicion}
 Dado un espacio medible $(\Omega,\mathcal{A})$, una medida en él es una función $\mu:\mathcal{A}\rightarrow[0,\infty]$ verificando: 
 \begin{itemize}
-	\item $\mu(\varnothing)= 0 $
-	\item Si ${E_{n} : n\in \mathds{N} }$ es una familia numerable de elementos disjuntos de $\mathcal{A}$ dos a dos, se tiene $$ \mu(\cup_{n\in\mathds{N}}E_{n}) = \sum_{n=1}^{\infty} \mu(E_{n})$$.
+	\item $\mu(\varnothing)= 0 $.
+	\item Si ${E_{n} : n\in \mathds{N} }$ es una familia numerable de elementos disjuntos de $\mathcal{A}$ dos a dos, se tiene $$ \mu(\cup_{n\in\mathds{N}}E_{n}) = \sum_{n=1}^{\infty} \mu(E_{n}).$$
 \end{itemize}
 \end{definicion}
 
@@ -52,7 +52,7 @@ Llamamos función simple positiva a toda función $s:\Omega\rightarrow[0,\infty[
 Sea $s\in \mathcal{S}$ y un conjunto medible E, llamamos integral de Lebesgue de s sobre E (con respecto a la medida $\mu$), a
 
 $$\int_{E}s \mu = \sum_{k=1}^{n}\alpha_{k}\mu(E\cap A_{k}) \in [0,\infty[,$$
-donde $s=\sum_{k=1}^{n} \alpha_{k}\chi_{A_{k}}$ es la descomposición canónica de s. Dicha descomposición es única, salvo el orden de los sumandos, por lo que la definición anterior es correcta.
+donde $s=\sum_{k=1}^{n} \alpha_{k}\chi_{A_{k}}$ es la descomposición canónica de s. Dicha descomposición es única, salvo el orden de los sumandos, por lo que está bien definida.
 
 \end{definicion}
 \section{Resultados auxiliares de Análisis Matemático}
@@ -74,7 +74,7 @@ para todo $y\in B$.
 \end{teorema}
 
 \begin{definicion}
-Un funcional sublineal en un espacio vectorial $X$ es una función $p:X\rightarrow \mathds{R}$ tal que
+Un funcional sublineal en un espacio vectorial $X$ es una función $p:X\rightarrow \mathds{R}$ tal que:
 \begin{enumerate}
 \item $p(x+y)\leq p(x) + p(y)$ para cualesquiera $x,y\in X$.
 \item $p(\alpha x) = \alpha p(x)$, $\forall\alpha \geq 0$ y  $\forall x\in X$.
@@ -105,11 +105,11 @@ Sea $X$ un espacio de Hausdorff localmente compacto. Sea $\Lambda$ un funcional 
 
 
 \begin{lema}\label{lm:p01}
-Sea K un compacto en \(\mathds{R}^{n}, f \in C(K)\). Entonces, existe una función continua \(E(f)\in C(R^{n}))\) tal que: 
+Sea K un compacto en \(\mathds{R}^{n}, f \in C(K)\). Entonces, existe una función continua \(E(f)\in C(\mathds{R}^{n})\) tal que: 
 \begin{enumerate}
-	\item \(f(x) = E(f)(x), \forall x \in K\)
-	\item \( \sup_{x\in \mathds{R}^{n}}\{\vert E(f)(x)\vert\} \leq \sup_{x\in K} \{\vert f(x)\vert\}\)
-	\item Existe una constante c tal que \[ \sup_{\vert x'-x''\vert < \delta}\left\{ \vert E(f)(x') - E(f)(x'')\vert \right\} \leq c \sup_{\vert x'-x'' \vert < \delta} \left\{\vert f(x')-f(x'')\vert\right\} \quad ( x',x''\in K)\]
+	\item \(f(x) = E(f)(x), \forall x \in K\).
+	\item \( \sup_{x\in \mathds{R}^{n}}\{\vert E(f)(x)\vert\} \leq \sup_{x\in K} \{\vert f(x)\vert\}\).
+	\item Existe una constante c tal que \[ \sup_{\vert x'-x''\vert < \delta}\left\{ \vert E(f)(x') - E(f)(x'')\vert \right\} \leq c \sup_{\vert x'-x'' \vert < \delta} \left\{\vert f(x')-f(x'')\vert\right\} \quad ( x',x''\in K).\]
 \end{enumerate}
 \end{lema}
 
@@ -139,7 +139,7 @@ Sean $X$ e $Y$ espacios de Banach. Entonces, toda aplicación lineal $f$ de $X$ 
 es cerrado en $X\times Y$, es continua. 
 \end{teorema}
 
-\begin{teorema}[Teorema de la convergencia dominada de Lebesgue]
+\begin{teorema}[Teorema de la convergencia dominada de Lebesgue]\label{thm:h08}
 
 Sea $\{ f_n\}$ una sucesión de funciones medibles definidas en $\Omega$ que converge puntualmente a una función $f$ medible.  Si existe una función $g\in L_1 (\Omega)$ tal que 
 \begin{equation}
